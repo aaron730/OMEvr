@@ -2,21 +2,25 @@
 
 # References
 
-	Time Keeping/Sols/Astronomy:
-		* https://www.planetary.org/articles/mars-calendar
-		* https://web.archive.org/web/20080602015650/http://www.arm.ac.uk/~aac/mars/Information.html
-		* https://www.forbes.com/sites/startswithabang/2020/06/29/nasa-rover-captures-what-a-solar-eclipse-looks-like-on-mars/?sh=15a1be3d469c
-	Geography:
+ 
+
+	1. Time Keeping/Sols/Astronomy:
+		a. https://www.planetary.org/articles/mars-calendar
+		b. https://web.archive.org/web/20080602015650/http://www.arm.ac.uk/~aac/mars/Information.html
+		c. https://www.forbes.com/sites/startswithabang/2020/06/29/nasa-rover-captures-what-a-solar-eclipse-looks-like-on-mars/?sh=15a1be3d469c
+		
+	2. Geography:
 
 
-	Climate:
+	3. Climate:
 
 
+	4. ISS Tasks/Missions:
+		a. https://www.nasa.gov/audience/foreducators/stem-on-station/ditl_working
 
-	ISS Tasks/Missions:
-		* https://www.nasa.gov/audience/foreducators/stem-on-station/ditl_working
 
-
+	5. Terraforming/Farming:
+		a. https://en.wikipedia.org/wiki/Mars_habitat
 
 ## Notes
 	* One solar day (Sol) on Mars is 24h 39m 35s
