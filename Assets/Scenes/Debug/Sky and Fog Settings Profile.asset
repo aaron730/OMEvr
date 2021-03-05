@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sky and Fog Settings Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4437356897000888544}
-  - {fileID: 3758138024233797307}
-  - {fileID: 7864355338303811353}
---- !u!114 &3758138024233797307
+  - {fileID: 7177449561770172501}
+  - {fileID: 3215918133665092287}
+  - {fileID: 4056133127699463890}
+--- !u!114 &3215918133665092287
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   type:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 2
   sphericalMode:
     m_OverrideState: 0
     m_Value: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Value: 55261.973
     min: 0
   aerosolDensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.01192826
     min: 0
     max: 1
@@ -136,13 +136,13 @@ MonoBehaviour:
     min: 1
     max: 10
   groundTint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0.4, g: 0.25, b: 0.15, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 0
   groundColorTexture:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 0}
   groundEmissionTexture:
     m_OverrideState: 0
@@ -196,30 +196,7 @@ MonoBehaviour:
     m_Value: 0
     min: -1
     max: 1
---- !u!114 &4437356897000888544
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
-  m_Name: VisualEnvironment
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  skyType:
-    m_OverrideState: 1
-    m_Value: 4
-  skyAmbientMode:
-    m_OverrideState: 0
-    m_Value: 0
-  fogType:
-    m_OverrideState: 1
-    m_Value: 0
---- !u!114 &7864355338303811353
+--- !u!114 &4056133127699463890
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,4 +317,27 @@ MonoBehaviour:
     m_Value: 0
   filter:
     m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &7177449561770172501
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
+  m_Name: VisualEnvironment
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  skyType:
+    m_OverrideState: 1
+    m_Value: 4
+  skyAmbientMode:
+    m_OverrideState: 1
+    m_Value: 1
+  fogType:
+    m_OverrideState: 1
     m_Value: 0
