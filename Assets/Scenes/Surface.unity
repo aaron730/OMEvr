@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16968256, g: 0.12993068, b: 0.10780609, a: 1}
+  m_IndirectSpecularColor: {r: 0.012483597, g: 0.011957899, b: 0.014154971, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,13 +410,13 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 0.8
+  m_Intensity: 2
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
-  m_VolumetricDimmer: 1
+  m_VolumetricDimmer: 0
   m_LightUnit: 2
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
@@ -440,12 +440,12 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 0.5
-  m_FlareSize: 0.5
-  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 100
+  m_AngularDiameter: 3
+  m_FlareSize: 1
+  m_FlareTint: {r: 1, g: 0.8746743, b: 0.2028302, a: 1}
+  m_FlareFalloff: 9
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  m_SurfaceTint: {r: 0.16981131, g: 0.06683602, b: 0, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_ShadowVariant: 0
   m_ShadowPrecision: 0
   useOldInspector: 0
-  useVolumetric: 1
+  useVolumetric: 0
   featuresFoldout: 1
   showAdditionalSettings: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
@@ -524,13 +524,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -573,7 +573,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 0.5
+  m_ShadowAngle: 3
 --- !u!4 &488139815
 Transform:
   m_ObjectHideFlags: 0
@@ -581,7 +581,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488139811}
-  m_LocalRotation: {x: 0.09942986, y: -0.89180404, z: 0.37107724, w: 0.2389582}
+  m_LocalRotation: {x: 0.18715419, y: 0.6671986, z: 0.69846886, w: -0.17877534}
   m_LocalPosition: {x: 5.3105783, y: 1.7017077, z: 4.082385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 0.4
+  m_Intensity: 1
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -868,12 +868,12 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 1
-  m_FlareSize: 0
-  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 0
+  m_AngularDiameter: 2
+  m_FlareSize: 0.1
+  m_FlareTint: {r: 0, g: 0, b: 0, a: 1}
+  m_FlareFalloff: 20
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  m_SurfaceTint: {r: 0.051619794, g: 0.054292858, b: 0.0754717, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -952,13 +952,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1001,7 +1001,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 1
+  m_ShadowAngle: 2
 --- !u!4 &954688300
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,7 +1009,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954688296}
-  m_LocalRotation: {x: -0.23895818, y: -0.37107727, z: -0.891804, w: 0.09942987}
+  m_LocalRotation: {x: 0.17877536, y: -0.6984688, z: 0.66719866, w: 0.18715417}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1040,7 +1040,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962484459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -640, y: -20, z: -640}
+  m_LocalPosition: {x: -560, y: -15, z: -760}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1647658103}
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b85a17f95d53634f8fa7d9087273e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOfDay: 9.26
+  timeOfDay: 24.48
   orbitSpeed: 0.01
   sun: {fileID: 488139814}
   moon: {fileID: 954688299}
