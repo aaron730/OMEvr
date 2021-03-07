@@ -48,7 +48,7 @@ MonoBehaviour:
     min: 0
     max: 4
   directLightingStrength:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.575
     min: 0
     max: 1

@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Value: 1700
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 400
+    m_Value: 4000
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -333,10 +333,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   type:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 2
   sphericalMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   seaLevel:
     m_OverrideState: 0
@@ -346,8 +346,8 @@ MonoBehaviour:
     m_Value: 6378100
     min: 0
   planetCenterPosition:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: -6378100, z: 0}
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
   airDensityR:
     m_OverrideState: 0
     m_Value: 0.04534
@@ -370,7 +370,7 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   airMaximumAltitude:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 55261.973
     min: 0
   aerosolDensity:

@@ -101,23 +101,23 @@ MonoBehaviour:
     min: 0
     max: 1
   airTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.9, g: 0.9, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.6084906, b: 0.7518602, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
   airMaximumAltitude:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 55261.973
     min: 0
   aerosolDensity:
-    m_OverrideState: 0
-    m_Value: 0.01192826
+    m_OverrideState: 1
+    m_Value: 0.3
     min: 0
     max: 1
   aerosolTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.7372549, b: 0.5254902, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -155,11 +155,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
   spaceEmissionTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 5a672cb61ef32734b9c28539c9c42494, type: 2}
   spaceEmissionMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0
     min: 0
   spaceRotation:
     m_OverrideState: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   colorMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   color:
     m_OverrideState: 0
@@ -226,14 +226,14 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.74054384, b: 0.4198113, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   maxFogDistance:
-    m_OverrideState: 0
-    m_Value: 5000
+    m_OverrideState: 1
+    m_Value: 40
     min: 0
   mipFogMaxMip:
     m_OverrideState: 0
@@ -249,17 +249,17 @@ MonoBehaviour:
     m_Value: 1000
     min: 0
   baseHeight:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 100
   maximumHeight:
     m_OverrideState: 0
-    m_Value: 50
+    m_Value: 30000
   meanFreePath:
-    m_OverrideState: 0
-    m_Value: 400
+    m_OverrideState: 1
+    m_Value: 10000
     min: 1
   enableVolumetricFog:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   albedo:
     m_OverrideState: 0

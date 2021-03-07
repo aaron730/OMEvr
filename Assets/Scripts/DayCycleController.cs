@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DayCycleController : MonoBehaviour
 {
-    [Range(0, 24)]
-
+    
+    [Range(0,25)]
     public float timeOfDay;
 
     public float orbitSpeed = 1.0f;
@@ -39,7 +39,7 @@ public class DayCycleController : MonoBehaviour
 
     private void UpdateTime()
     {
-        float alpha = timeOfDay / 24.0f;
+        float alpha = timeOfDay / 24.6597f;
         float sunRotation = Mathf.Lerp(-90, 270, alpha);
         float moonRotation = sunRotation - 180;
 
