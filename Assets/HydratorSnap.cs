@@ -14,7 +14,7 @@ public class HydratorSnap : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {     
         FoodBag foodBag = other.GetComponent<FoodBag>();
-        if (foodBag.IsAttachedToHydrator)
+        if (foodBag == null || foodBag.IsAttachedToHydrator)
         {
             return;
         }
@@ -26,16 +26,9 @@ public class HydratorSnap : MonoBehaviour
         SnapPoint = OriginalSnapPoint.transform.position;
         Rigidbody otherRb = other.GetComponent<Rigidbody>();
 
-        /*
-        // Gets half the width of bag's box collider and adds it to snap point
-        BoxCollider otherCollider = other.GetComponent<BoxCollider>();
-        SnapPoint = SnapPoint + new Vector3(otherCollider.size.x / 2, 0, 0);
-        */
-
-        other.transform.rotation = OriginalSnapPoint.rotation;
-        Debug.Log(SnapPoint + "  " +foodBag.SnapPoint.TransformPoint(foodBag.SnapPoint.position));
-        SnapPoint = SnapPoint + new Vector3(0, foodBag.SnapPoint.position.y, 0);
-        other.transform.position = SnapPoint;
+        other.transform.parent = transform.parent;
+        other.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        other.transform.localPosition = new Vector3(0.333f, 0, 0);
         otherRb.isKinematic = true;
         Hydrator.HydrateBag(other.gameObject);
     }
