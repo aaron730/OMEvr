@@ -9,6 +9,8 @@ namespace Valve.VR.InteractionSystem.Sample
 
         public GameObject prefab;
 
+        public GameObject SceneManager;
+
         private void Start()
         {
             hoverButton.onButtonDown.AddListener(OnButtonDown);
@@ -16,7 +18,12 @@ namespace Valve.VR.InteractionSystem.Sample
 
         private void OnButtonDown(Hand hand)
         {
-            StartCoroutine(DoPlant());
+           endScene();
+        }
+
+        private void endScene()
+        {
+            SceneManager.SetActive(true);
         }
 
         private IEnumerator DoPlant()
