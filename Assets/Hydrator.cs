@@ -1,23 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hydrator : MonoBehaviour
 {
 
-    private GameObject AttatchedBag;
+    public GameObject AttatchedBag;
+    public Text MachineText;
     
     public void HydrateBag(GameObject foodBag)
     {
         AttatchedBag = foodBag;
+        /*
         Material material = foodBag.GetComponentInChildren<Renderer>().material;
         material.SetColor("_Color", Color.red);
-        Hydrate();
+        */
+        StartCoroutine(Inflate(5));
     }
 
-    private void Hydrate()
+    public void DetatchBag()
     {
-        StartCoroutine(Inflate(5));
+        AttatchedBag = null;
+        MachineText.text = "Attatch Dehydrated Bag Here";
+    }
+
+    private void UpdateMachineText(float time)
+    {
+        MachineText.text = "Hydrating..." + time.ToString("0.00");
     }
 
     private IEnumerator Inflate(int time)
@@ -34,9 +44,11 @@ public class Hydrator : MonoBehaviour
             AttatchedBag.transform.localScale = scale;
             scale = new Vector3(AttatchedBag.transform.localScale.x, AttatchedBag.transform.localScale.y + increment, AttatchedBag.transform.localScale.z);
             counter--;
+            UpdateMachineText(counter/timeScale);
             yield return new WaitForSeconds(1/timeScale);
         }
-        AttatchedBag.GetComponent<FoodBag>().IsHydrated = true;
-        AttatchedBag.GetComponent<Rigidbody>().isKinematic = false;
+        MachineText.text = "Ready";
+        AttatchedBag.GetComponent<FoodBag>().SetHydration(true);
+        //AttatchedBag.GetComponent<Rigidbody>().isKinematic = false;
     }
 }

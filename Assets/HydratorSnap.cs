@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class HydratorSnap : MonoBehaviour
 {
-    public Transform OriginalSnapPoint;
     public Hydrator Hydrator;
-    private Vector3 SnapPoint;
-    public void Start()
-    {
-        SnapPoint = OriginalSnapPoint.transform.position;
-    }
+
     public void OnTriggerEnter(Collider other)
     {     
         FoodBag foodBag = other.GetComponent<FoodBag>();
-        if (foodBag == null || foodBag.IsAttachedToHydrator)
+        if (foodBag == null ||
+            foodBag.AttatchedHydrator != null ||
+            foodBag.IsHydrated ||
+            Hydrator.AttatchedBag != null)
         {
             return;
         }
 
-        foodBag.IsAttachedToHydrator = true;
+        foodBag.AttatchedHydrator = Hydrator;
 
         Debug.Log("Snapping bag to hydrator");
 
-        SnapPoint = OriginalSnapPoint.transform.position;
         Rigidbody otherRb = other.GetComponent<Rigidbody>();
 
         other.transform.parent = transform.parent;
