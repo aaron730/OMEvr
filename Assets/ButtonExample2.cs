@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
-    public class ButtonExample : MonoBehaviour
+    public class ButtonExample2 : MonoBehaviour
     {
         public HoverButton hoverButton;
 
