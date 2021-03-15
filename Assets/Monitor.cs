@@ -19,6 +19,8 @@ public class Monitor : MonoBehaviour
 
     public void DisplayText(string text)
     {
+        StopAllCoroutines();
+        MonitorText.text = "";
         StartCoroutine(Print(text));
     }
 
