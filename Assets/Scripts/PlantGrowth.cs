@@ -51,22 +51,22 @@ public class PlantGrowth : MonoBehaviour
         
         timeOfDay = Math.Round(timeOfDayCycle.getTimeOfDay(),2);
        
-        for (int i = 4; i >= 0; i--) {
+        for (int i = 0; i <= 4; i++) {
             //  Debug.Log(Mathf.FloorToInt(timeOfDay / (float)growthStageInHoursOfDay[i]));
            // Debug.Log(growthStageInHoursOfDay[i]);
             if (timeOfDay == growthStageInHoursOfDay[i])
             {
-                growthStage = i;
-                Debug.Log(growthStage);
+                plantMeshFilter.mesh = growthStages[i];
+                
             }
         }
 
-       /* if(growthStageBeginning > growthStage)
-        {*/
-            growthStageBeginning = growthStage;
-            plantMeshFilter.mesh = growthStages[growthStage];
-            Debug.Log("hell0");
-     //   }
+       
+        
+            
+            
+            
+        
 
     }
 }

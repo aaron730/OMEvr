@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1410383, g: 0.08266783, b: 0.042464018, a: 1}
+  m_IndirectSpecularColor: {r: 0.10279256, g: 0.061736047, b: 0.031056166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2879,6 +2879,9 @@ MonoBehaviour:
   growthStages:
   - {fileID: 4300002, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
   - {fileID: 4300000, guid: 87e302db3b24caf4780298d0110c4c83, type: 3}
+  - {fileID: 4300002, guid: 8160b82f1f47c184896180b907d2f21f, type: 3}
+  - {fileID: 4300000, guid: 8160b82f1f47c184896180b907d2f21f, type: 3}
+  - {fileID: 4300002, guid: 89463cad56f99fb468cfab59d3610d61, type: 3}
   plant: {fileID: 3418713060093592539}
   growthStage: 0
 --- !u!33 &3418713060094631897
