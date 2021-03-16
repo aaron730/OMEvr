@@ -37,10 +37,9 @@ public class DoorController : MonoBehaviour
             }
             else if (direction == OpenDirection.y)
             {
-                for (int i = 0; i <= doorBody.localPosition.y; i++)
-                {
+                
                     doorBody.localPosition = new Vector3(doorBody.localPosition.x, Mathf.Lerp(doorBody.localPosition.y, defaultDoorPosition.y + (open ? openDistance : 0), Time.deltaTime * openSpeed), doorBody.localPosition.z);
-                }
+                
             }
             else if (direction == OpenDirection.z)
             {
@@ -52,6 +51,43 @@ public class DoorController : MonoBehaviour
     // Activate the Main function when Player enter the trigger area
     void OnTriggerEnter(Collider other)
     {
+        if (doorOpen == false)
+        {
+            open = true;
+            if (openDistance >= doorBody.position.y - .1)
+            {
+                doorOpen = true;
+            }
+        }
+        else
+        {
+            open = false;
+            doorOpen = false;
+                
+            
+        }
+
+        
+
+    }
+
+
+
+    
+
+    // Deactivate the Main function when Player exit the trigger area
+    /*void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            open = false;
+        }
+    }
+
+    */
+    public void OnPress(Hand hand)
+        {
+
         if (doorOpen == false)
         {
             open = true;
@@ -71,21 +107,6 @@ public class DoorController : MonoBehaviour
 
     }
 
-    // Deactivate the Main function when Player exit the trigger area
-    /*void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            open = false;
-        }
-    }
-
-    */
-    public void OnPress(Hand hand)
-        {
-       
-          
-        }
-
+    
     
 }
