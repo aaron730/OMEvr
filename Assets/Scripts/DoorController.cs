@@ -52,7 +52,23 @@ public class DoorController : MonoBehaviour
     // Activate the Main function when Player enter the trigger area
     void OnTriggerEnter(Collider other)
     {
-        
+        if (doorOpen == false)
+        {
+            open = true;
+            if (openDistance >= doorBody.position.y - .01)
+            {
+                doorOpen = true;
+            }
+        }
+        else
+        {
+            open = false;
+            if (doorBody.position.y <= defaultDoorPosition.y + .05)
+            {
+                doorOpen = false;
+            }
+        }
+
     }
 
     // Deactivate the Main function when Player exit the trigger area
@@ -65,26 +81,10 @@ public class DoorController : MonoBehaviour
     }
 
     */
-        public void OnPress(Hand hand)
+    public void OnPress(Hand hand)
         {
        
-            if (doorOpen == false)
-            {
-                open = true;
-                if (openDistance >= doorBody.position.y - .01)
-                {
-                    doorOpen = true;
-                }
-            }
-            else
-            {
-                open = false;
-                if (doorBody.position.y <= defaultDoorPosition.y + .05)
-                {
-                    doorOpen = false;
-                }
-            }
-
+          
         }
 
     

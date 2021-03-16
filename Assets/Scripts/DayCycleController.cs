@@ -80,4 +80,9 @@ public class DayCycleController : MonoBehaviour
         moon.shadows = LightShadows.Soft;
     }
 
+    public float getTimeOfDay()
+    {
+        return timeOfDay;
+    }
+
 }
