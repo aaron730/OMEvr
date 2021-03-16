@@ -22,8 +22,6 @@
 	5. Terraforming/Farming:
 		a. https://en.wikipedia.org/wiki/Mars_habitat
 
-	6. Gravity:
-		a. https://www.universetoday.com/14859/gravity-on-mars/
 ## Notes
 	* One solar day (Sol) on Mars is 24h 39m 35s
 	* Phobos appears to look 1/3 the size of Earth's moon from Mars
