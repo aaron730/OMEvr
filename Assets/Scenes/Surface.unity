@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14103067, g: 0.08266318, b: 0.042459905, a: 1}
+  m_IndirectSpecularColor: {r: 0.1956867, g: 0.12316084, b: 0.05414343, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_FlareTint: {r: 1, g: 0.8746743, b: 0.2028302, a: 1}
   m_FlareFalloff: 9
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 0.16981131, g: 0.06683602, b: 0, a: 1}
+  m_SurfaceTint: {r: 0.6886792, g: 0.54043716, b: 0.19166073, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
