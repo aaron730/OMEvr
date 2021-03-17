@@ -91,7 +91,7 @@ public class DoorController : MonoBehaviour
         if (doorOpen == false)
         {
             open = true;
-            if (openDistance >= doorBody.position.y - .01)
+            if (openDistance >= doorBody.position.y - .1)
             {
                 doorOpen = true;
             }
@@ -99,14 +99,15 @@ public class DoorController : MonoBehaviour
         else
         {
             open = false;
-            if (doorBody.position.y <= defaultDoorPosition.y + .05)
-            {
-                doorOpen = false;
-            }
+            doorOpen = false;
+
+
         }
+
+
 
     }
 
-    
-    
+
+
 }

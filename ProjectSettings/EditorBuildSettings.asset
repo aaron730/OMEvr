@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Surface.unity
     guid: decc030679d157940bf2ccf245364336
+  - enabled: 1
+    path: Assets/Scenes/Orbit.unity
+    guid: 5002948f0fd72a241900292db62cc3c9
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: a53494b008046ce47ba546337b83fc55, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: abe160948684d444f89f015da13e94c9, type: 2}
