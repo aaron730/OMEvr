@@ -9,6 +9,8 @@ public class MarsRock : MonoBehaviour
     public enum RockType
     {
         Olivine,
-        Basalt
+        Basalt,
+        Geothite,
+        Gypsum
     }
 }
