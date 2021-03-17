@@ -16,6 +16,7 @@ public class FoodBag : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = false;
             AttatchedHydrator.DetatchBag();
+            transform.parent = null;
             AttatchedHydrator = null;
         }
     }

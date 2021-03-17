@@ -25,7 +25,7 @@ public class HydratorSnap : MonoBehaviour
 
         other.transform.parent = transform.parent;
         other.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        other.transform.localPosition = new Vector3(0.333f, 0, 0);
+        other.transform.localPosition = new Vector3(0.233f, 0, 0);
         otherRb.isKinematic = true;
         Hydrator.HydrateBag(other.gameObject);
     }

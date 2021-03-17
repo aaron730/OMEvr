@@ -37,7 +37,7 @@ public class Hydrator : MonoBehaviour
 
         Vector3 scale = AttatchedBag.transform.localScale;
 
-        float increment = (1 - AttatchedBag.transform.localScale.y) / (5*timeScale);
+        float increment = (.6f - AttatchedBag.transform.localScale.y) / (5*timeScale);
         float counter = time * timeScale;
         while(counter >= 0)
         {        
