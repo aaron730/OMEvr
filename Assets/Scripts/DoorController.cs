@@ -10,7 +10,7 @@ public class DoorController : MonoBehaviour
     public float openSpeed = 2.0f; //Increasing this value will make the door open faster
     public Transform doorBody; //Door body Transform
     private bool doorOpen = false;
-
+    public DayCycleController cycleController;
 
     bool open = false;
 
@@ -106,6 +106,11 @@ public class DoorController : MonoBehaviour
 
 
 
+    }
+
+    public void PlantPress(Hand hand)
+    {
+        cycleController.orbitSpeed = 1;
     }
 
 
