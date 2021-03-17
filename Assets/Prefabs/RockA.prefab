@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 712133433}
   - component: {fileID: 712133435}
   - component: {fileID: 712133436}
+  - component: {fileID: 712133438}
   m_Layer: 0
   m_Name: RockA
   m_TagString: MarsRock
@@ -184,6 +185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+--- !u!65 &712133438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.75643, y: 24.113892, z: 50.98146}
+  m_Center: {x: 0, y: 12.701809, z: -0.75992936}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
