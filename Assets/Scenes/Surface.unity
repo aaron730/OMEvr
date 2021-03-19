@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3082769, g: 0.19387674, b: 0.10276759, a: 1}
+  m_IndirectSpecularColor: {r: 0.3082769, g: 0.1938796, b: 0.10276902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3652,6 +3652,11 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
+--- !u!82 &1008484256 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4817313953723326146, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+  m_PrefabInstance: {fileID: 4817313954565642589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1063271183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7261,6 +7266,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4817313953723326146, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: Drill
+      value: 
+      objectReference: {fileID: 1008484256}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: turnOnDrill
+      value: 
+      objectReference: {fileID: 8300000, guid: d657235e7f6f71843a50e353091832c8, type: 3}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: drillContactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 10161ccdd91864844875b7eefb2fcf0d, type: 3}
     - target: {fileID: 4994545835343704912, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: m_RootOrder
       value: 1

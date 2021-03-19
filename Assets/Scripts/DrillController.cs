@@ -9,11 +9,11 @@ public class DrillController : MonoBehaviour
     // Start is called before the first frame update
     public Transform drillTransform;
     public AudioSource drillContactSound;
+    public AudioSource turnOnDrill;
     private bool startDrill = false;
     private bool buttonPressed = false;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -47,15 +47,15 @@ public class DrillController : MonoBehaviour
 
     public void OnPress(Hand hand)
     {
-
+        turnOnDrill.Play();
         buttonPressed = true;
 
-        StartCoroutine(playSound());
+        StartCoroutine(playDrillContactDelaySound());
       
     
     }
 
-    public IEnumerator playSound()
+    public IEnumerator playDrillContactDelaySound()
     {
         yield return new WaitForSeconds(1);
         drillContactSound.Play();
