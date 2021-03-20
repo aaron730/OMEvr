@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3082769, g: 0.1938796, b: 0.10276902, a: 1}
+  m_IndirectSpecularColor: {r: 0.24383473, g: 0.15912831, b: 0.082353115, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4274,6 +4274,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ed611a3ded592db4082a86450ac3e55f, type: 3}
   m_PrefabInstance: {fileID: 1331233758}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366652476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+  m_PrefabInstance: {fileID: 4817313954565642589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3418025f7cb3442b7f64e1fc1de1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388710880
 GameObject:
   m_ObjectHideFlags: 0
@@ -7266,9 +7277,69 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1416390406023372225, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434651041656098495, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313953723326146, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4817313953723326146, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 8300000, guid: 10161ccdd91864844875b7eefb2fcf0d, type: 3}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: engageAtPercent
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: disengageAtPercent
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1366652476}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1366652476}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DrillController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673153, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: Drill
