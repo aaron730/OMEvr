@@ -12,7 +12,9 @@ public class DrillController : MonoBehaviour
     public AudioSource Drill;
     public AudioClip drillContactSound;
     public AudioClip turnOnDrill;
-    
+    public List<GameObject> RockPrefabs;
+    public Transform RockSpawnPoint;
+    private bool startDrill = false;
     private bool buttonPressed = false;
     private Vector3 drillDefaultLocation;
     void Start()
@@ -53,14 +55,6 @@ public class DrillController : MonoBehaviour
             drillTransform.Translate(0f, .001f, 0f);
 
 
-
-        }
-    }
-
-   
-
-
-
     public void OnPress(Hand hand)
     {
         if (buttonPressed == false)
@@ -79,10 +73,33 @@ public class DrillController : MonoBehaviour
     
     }
 
+    public void SpawnRocks()
+    {
+        StartCoroutine(SpawnRock(100));
+    }
+
+    public IEnumerator SpawnRock(int numberOfRocks)
+    {
+        System.Random rnd = new System.Random();
+        GameObject toSpawn = RockPrefabs[rnd.Next(0, RockPrefabs.Count)];
+        var force = 45;
+        while (numberOfRocks > 0)
+        {
+            var rock = Instantiate(toSpawn, RockSpawnPoint.position, Quaternion.identity);
+            var rb = rock.GetComponent<Rigidbody>();
+            var rockScript = rock.GetComponent<MarsRock>();
+            rockScript.RandomizeType();
+            rb.AddForce(rnd.Next(-force, force), rnd.Next(0, force), rnd.Next(-force, force));
+            numberOfRocks--;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
     public IEnumerator playDrillContactDelaySound()
     {
         yield return new WaitForSeconds(5);
         Drill.PlayOneShot(drillContactSound);
+        SpawnRocks();
 
     }
 }
