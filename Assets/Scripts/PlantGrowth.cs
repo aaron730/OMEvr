@@ -39,9 +39,9 @@ public class PlantGrowth : MonoBehaviour
         {
           //times 24.6597 by n to divide into n days(longer day cycle)
             growthStageInHoursOfDay[i-1] = Math.Round((float)(24.6597 / i),2);
-            
+            Debug.Log(growthStageInHoursOfDay[i - 1]);
         }
-        Debug.Log(growthStageInHoursOfDay[0]);
+        
         
     }
 
@@ -49,24 +49,30 @@ public class PlantGrowth : MonoBehaviour
     void Update()
     {
         
-        timeOfDay = Math.Round(timeOfDayCycle.getTimeOfDay(),2);
+        
        
-        for (int i = 0; i <= 4; i++) {
+        
+            
+            
+            
+        
+
+    }
+
+    private void FixedUpdate()
+    {
+        timeOfDay = Math.Round(timeOfDayCycle.getTimeOfDay(), 2);
+
+        for (int i = 1; i <= 5; i++)
+        {
             //  Debug.Log(Mathf.FloorToInt(timeOfDay / (float)growthStageInHoursOfDay[i]));
-           // Debug.Log(growthStageInHoursOfDay[i]);
-            if (timeOfDay == growthStageInHoursOfDay[i])
+            // Debug.Log(growthStageInHoursOfDay[i]);
+            if (timeOfDay == growthStageInHoursOfDay[i-1])
             {
                 plantMeshFilter.mesh = growthStages[i];
-                
+
             }
         }
-
-       
-        
-            
-            
-            
-        
 
     }
 }

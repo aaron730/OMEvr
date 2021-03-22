@@ -12,7 +12,7 @@ public class DrillController : MonoBehaviour
     public AudioSource Drill;
     public AudioClip drillContactSound;
     public AudioClip turnOnDrill;
-    private bool startDrill = false;
+    
     private bool buttonPressed = false;
     private Vector3 drillDefaultLocation;
     void Start()
@@ -23,6 +23,11 @@ public class DrillController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    private void FixedUpdate()
     {
         if (buttonPressed)
         {
@@ -36,25 +41,20 @@ public class DrillController : MonoBehaviour
 
             }
 
-            
+
 
         }
-        else if(!buttonPressed && drillTransform.position != drillDefaultLocation)
+        else if (!buttonPressed && drillTransform.position != drillDefaultLocation)
         {
             drillTransform.Rotate(0f, -1f, 0f);
 
 
-            
-                drillTransform.Translate(0f, .001f, 0f);
+
+            drillTransform.Translate(0f, .001f, 0f);
 
 
-            
+
         }
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
    
