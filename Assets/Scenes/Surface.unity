@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24383473, g: 0.15912831, b: 0.082353115, a: 1}
+  m_IndirectSpecularColor: {r: 0.24382997, g: 0.15913045, b: 0.082353115, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3011,6 +3011,11 @@ MonoBehaviour:
   m_ObsoleteBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
   m_ObsoleteBoxSideFadePositive: {x: 1, y: 1, z: 1}
   m_ObsoleteBoxSideFadeNegative: {x: 1, y: 1, z: 1}
+--- !u!4 &891381909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4994545835343704912, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+  m_PrefabInstance: {fileID: 4817313954565642589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &898228224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4404,6 +4409,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1464494632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1464494633}
+  m_Layer: 0
+  m_Name: Rock Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1464494633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464494632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.505, y: 0.099, z: 7.764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 891381909}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1469118066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7279,7 +7314,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1416390406023372225, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3434651041656098495, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7350,9 +7385,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: d657235e7f6f71843a50e353091832c8, type: 3}
     - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: RockSpawnPoint
+      value: 
+      objectReference: {fileID: 1464494633}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: drillContactSound
       value: 
       objectReference: {fileID: 8300000, guid: 10161ccdd91864844875b7eefb2fcf0d, type: 3}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: RockPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: RockPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 100000, guid: ca90c396dc4ab9745a326c1d3ea0fdb2, type: 3}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: RockPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 100000, guid: ed611a3ded592db4082a86450ac3e55f, type: 3}
+    - target: {fileID: 4817313955441673156, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+      propertyPath: RockPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 100000, guid: ac8cd8e6320ae3e4b927387f08c24c7e, type: 3}
     - target: {fileID: 4994545835343704912, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
       propertyPath: m_RootOrder
       value: 1
