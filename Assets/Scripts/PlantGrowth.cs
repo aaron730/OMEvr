@@ -38,7 +38,7 @@ public class PlantGrowth : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
           //times 24.6597 by n to divide into n days(longer day cycle)
-            growthStageInHoursOfDay[i-1] = Math.Round((float)(24.6597 / i),2);
+            growthStageInHoursOfDay[i-1] = Math.Round((float)(24.6597 / i),0);
             Debug.Log(growthStageInHoursOfDay[i - 1]);
         }
         
@@ -61,7 +61,7 @@ public class PlantGrowth : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timeOfDay = Math.Round(timeOfDayCycle.getTimeOfDay(), 2);
+        timeOfDay = Math.Round(timeOfDayCycle.getTimeOfDay(), 0);
 
         for (int i = 1; i <= 5; i++)
         {
@@ -75,4 +75,12 @@ public class PlantGrowth : MonoBehaviour
         }
 
     }
+
+    private bool FertileSoil()
+    {
+       
+        return true;
+    }
+
+    
 }

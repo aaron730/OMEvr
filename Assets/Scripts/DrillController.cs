@@ -53,7 +53,8 @@ public class DrillController : MonoBehaviour
 
 
             drillTransform.Translate(0f, .001f, 0f);
-
+        }
+    }
 
     public void OnPress(Hand hand)
     {
