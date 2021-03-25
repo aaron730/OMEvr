@@ -8,7 +8,7 @@ public enum ControlMode { simple = 1, touch = 2 }
 
 public class BuggyControl : MonoBehaviour
 {
-
+    public Camera carCamera;
 
     public ControlMode controlMode = ControlMode.simple;
 
@@ -112,7 +112,9 @@ public class BuggyControl : MonoBehaviour
 
         public List<Transform> cameraSwitchView;
 
-        public Camera carCamera;
+        
+        
+        public Collider closeToCar;
 
         public float springs = 25000.0f;
         public float dampers = 1500.0f;
@@ -268,7 +270,14 @@ public class BuggyControl : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private void Start()
+    {
+        carCamera.enabled = false;
+    }
+
+
     
+
     void Awake()
     {
 
@@ -436,7 +445,7 @@ public class BuggyControl : MonoBehaviour
 
     void Update()
     {
-
+        
 
         if (!carSetting.automaticGear && activeControl)
         {
