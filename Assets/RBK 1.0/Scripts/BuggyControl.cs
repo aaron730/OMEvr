@@ -34,10 +34,13 @@ public class BuggyControl : MonoBehaviour
 
         //MY EDITS
         public Collider closeToCar;
+        
         public GameObject VRPlayer;
-        public Camera VRPlayerCamera;
+        public GameObject TwoDPlayer;
         public GameObject Driver;
-        public Camera carCamera;
+        public GameObject Buggy;
+        public Camera BuggyCamera;
+        
         public Hand hand;
         //
 
@@ -286,8 +289,10 @@ public class BuggyControl : MonoBehaviour
 
         private void Start()
     {
-        carSetting.carCamera.enabled = false;
+        
         carSetting.Driver.SetActive(false);
+        carSetting.BuggyCamera = carSetting.Buggy.GetComponentInChildren<Camera>();
+        carSetting.BuggyCamera.enabled = false;
         
 
     }
@@ -486,10 +491,13 @@ public class BuggyControl : MonoBehaviour
 
 
     private bool carState;
+   
     private bool isInCar()
     {
         return carState;
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -505,12 +513,15 @@ public class BuggyControl : MonoBehaviour
     {
 
 
-        if ((isInCar() && (Input.GetKey(KeyCode.F) || isGrabbing)) || carSetting.carCamera.enabled)
+        if ((isInCar() && (Input.GetKey(KeyCode.F) || isGrabbing)) || carSetting.BuggyCamera.enabled)
         {
-            
-                carSetting.carCamera.enabled = true;
-                carSetting.VRPlayerCamera.enabled = false;
 
+            carSetting.BuggyCamera.enabled = true;
+                carSetting.Driver.SetActive(true);
+                carSetting.VRPlayer.SetActive(false);
+                carSetting.TwoDPlayer.SetActive(false);
+
+                //carSetting.carCamera.transform.position = carSetting.Driver.transform.position;
                 // speed of car
                 speed = myRigidbody.velocity.magnitude * 2.7f;
 
