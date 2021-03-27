@@ -2,17 +2,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Valve.VR.InteractionSystem;
+using Valve.VR;
 
 public enum ControlMode { simple = 1, touch = 2 }
 
 
 public class BuggyControl : MonoBehaviour
 {
-    public Camera carCamera;
-
+    
     public ControlMode controlMode = ControlMode.simple;
 
     public bool activeControl = false;
+
+
+    //CARSETTINGS ARE A MIX OF DEFAULT AND THE THINGS THAT I'VE EDITED
+    //I DIDN'T EDIT ANY PUBLIC/PRIVATE VARIABLES BESIDES THESE
+
+    public CarSetting carSetting;
+
+    [System.Serializable]
+    public class CarSetting
+    {
+
+        public bool showNormalGizmos = false;
+        public Transform carSteer;
+        public HitGround[] hitGround;
+
+        public List<Transform> cameraSwitchView;
+
+
+        //MY EDITS
+        public Collider closeToCar;
+        public GameObject VRPlayer;
+        public Camera VRPlayerCamera;
+        public GameObject Driver;
+        public Camera carCamera;
+        public Hand hand;
+        //
+
+        public float springs = 25000.0f;
+        public float dampers = 1500.0f;
+
+        public float carPower = 120f;
+        public float shiftPower = 150f;
+        public float brakePower = 8000f;
+
+        public Vector3 shiftCentre = new Vector3(0.0f, -0.8f, 0.0f);
+
+        public float maxSteerAngle = 25.0f;
+
+        public float shiftDownRPM = 1500.0f;
+        public float shiftUpRPM = 2500.0f;
+        public float idleRPM = 500.0f;
+
+        public float stiffness = 2.0f;
+
+        public bool automaticGear = true;
+
+        public float[] gears = { -10f, 9f, 6f, 4.5f, 3f, 2.5f };
+
+
+        public float LimitBackwardSpeed = 60.0f;
+        public float LimitForwardSpeed = 220.0f;
+
+    }
+
 
 
     // Wheels Setting /////////////////////////////////
@@ -100,49 +155,7 @@ public class BuggyControl : MonoBehaviour
 
     // Car Engine Setting /////////////////////////////////
 
-    public CarSetting carSetting;
-
-    [System.Serializable]
-    public class CarSetting
-    {
-
-        public bool showNormalGizmos = false;
-        public Transform carSteer;
-        public HitGround[] hitGround;
-
-        public List<Transform> cameraSwitchView;
-
-        
-        
-        public Collider closeToCar;
-
-        public float springs = 25000.0f;
-        public float dampers = 1500.0f;
-
-        public float carPower = 120f;
-        public float shiftPower = 150f;
-        public float brakePower = 8000f;
-
-        public Vector3 shiftCentre = new Vector3(0.0f, -0.8f, 0.0f);
-
-        public float maxSteerAngle = 25.0f;
-
-        public float shiftDownRPM = 1500.0f;
-        public float shiftUpRPM = 2500.0f;
-        public float idleRPM = 500.0f;
-
-        public float stiffness = 2.0f;
-
-        public bool automaticGear = true;
-
-        public float[] gears = { -10f, 9f, 6f, 4.5f, 3f, 2.5f };
-
-
-        public float LimitBackwardSpeed = 60.0f;
-        public float LimitForwardSpeed = 220.0f;
-
-    }
-
+    
     
 
 
@@ -267,12 +280,16 @@ public class BuggyControl : MonoBehaviour
 
     }
 
+    
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////START
 
-    private void Start()
+        private void Start()
     {
-        carCamera.enabled = false;
+        carSetting.carCamera.enabled = false;
+        carSetting.Driver.SetActive(false);
+        
+
     }
 
 
@@ -443,9 +460,12 @@ public class BuggyControl : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private SteamVR_Input_Sources inputSource;
+    private bool isGrabbing;
+
     void Update()
     {
-        
+        isGrabbing = SteamVR_Actions._default.GrabGrip[inputSource].state || SteamVR_Actions._default.GrabPinch[inputSource].state;
 
         if (!carSetting.automaticGear && activeControl)
         {
@@ -465,546 +485,571 @@ public class BuggyControl : MonoBehaviour
     }
 
 
+    private bool carState;
+    private bool isInCar()
+    {
+        return carState;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+           
+            carState = true;
+        
+        
+        
+    }
 
     void FixedUpdate()
     {
 
 
-        // speed of car
-        speed = myRigidbody.velocity.magnitude * 2.7f;
-
-        if (speed < lastSpeed - 10 && slip < 10) slip = lastSpeed / 15;
-        
-        lastSpeed = speed;
-
-
-        if (slip2 != 0.0f)
-            slip2 = Mathf.MoveTowards(slip2, 0.0f, 0.1f);
-
-
-        myRigidbody.centerOfMass = carSetting.shiftCentre;
-        
-
-
-        if (activeControl)
+        if ((isInCar() && (Input.GetKey(KeyCode.F) || isGrabbing)) || carSetting.carCamera.enabled)
         {
-            if (controlMode == ControlMode.simple)
-            {
+            
+                carSetting.carCamera.enabled = true;
+                carSetting.VRPlayerCamera.enabled = false;
 
-                accel = 0;
-                brake = false;
-                shift = false;
+                // speed of car
+                speed = myRigidbody.velocity.magnitude * 2.7f;
 
-                if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
+                if (speed < lastSpeed - 10 && slip < 10) slip = lastSpeed / 15;
+
+                lastSpeed = speed;
+
+
+                if (slip2 != 0.0f)
+                    slip2 = Mathf.MoveTowards(slip2, 0.0f, 0.1f);
+
+
+                myRigidbody.centerOfMass = carSetting.shiftCentre;
+
+
+
+                if (activeControl)
                 {
-                    steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
-                    accel = Input.GetAxis("Vertical");
-                    brake = Input.GetButton("Jump");
-                    shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
-                }
-
-            }
-            else if (controlMode == ControlMode.touch)
-            {
-
-                if (accelFwd != 0) { accel = accelFwd; } else { accel = accelBack; }
-                steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
-
-            }
-
-        }
-        else
-        {
-            accel = 0.0f;
-            steer = 0.0f;
-            brake = false;
-            shift = false;
-        }
-
-
-
-        if (!carWheels.wheels.frontWheelDrive && !carWheels.wheels.backWheelDrive)
-            accel = 0.0f;
-
-
-
-        if (carSetting.carSteer)
-            carSetting.carSteer.localEulerAngles = new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (steer * -120.0f));
-
-
-
-        if (carSetting.automaticGear && (currentGear == 1) && (accel < 0.0f))
-        {
-            if (speed < 5.0f)
-                ShiftDown();
-
-
-        }
-        else if (carSetting.automaticGear && (currentGear == 0) && (accel > 0.0f))
-        {
-            if (speed < 5.0f)
-                ShiftUp();
-
-        }
-        else if (carSetting.automaticGear && (motorRPM > carSetting.shiftUpRPM) && (accel > 0.0f) && speed > 10.0f && !brake)
-        {
-
-            ShiftUp();
-
-        }
-        else if (carSetting.automaticGear && (motorRPM < carSetting.shiftDownRPM) && (currentGear > 1))
-        {
-            ShiftDown();
-        }
-
-
-
-        if (speed < 1.0f) Backward = true;
-
-
-
-        if (currentGear == 0 && Backward == true)
-        {
-          //  carSetting.shiftCentre.z = -accel / -5;
-            if (speed < carSetting.gears[0] * -10)
-                accel = -accel;
-        }
-        else
-        {
-            Backward = false;
-         //   if (currentGear > 0)
-         //   carSetting.shiftCentre.z = -(accel / currentGear) / -5;
-        }
-
-      //  carSetting.shiftCentre.x = -Mathf.Clamp(steer * (speed / 100), -0.03f, 0.03f);
-
-        // Brake Lights
-
-        foreach (Light brakeLight in carLights.brakeLights)
-        {
-            if (brake || accel < 0 || speed < 1.0f)
-            {
-                brakeLight.intensity = Mathf.MoveTowards(brakeLight.intensity, 8, 0.5f);
-            }
-            else
-            {
-                brakeLight.intensity = Mathf.MoveTowards(brakeLight.intensity, 0, 0.5f);
-
-            }
-
-            brakeLight.enabled = brakeLight.intensity == 0 ? false : true;
-        }
-
-
-        // Reverse Lights
-
-        foreach (Light WLight in carLights.reverseLights)
-        {
-            if (speed > 2.0f && currentGear == 0)
-            {
-                WLight.intensity = Mathf.MoveTowards(WLight.intensity, 8, 0.5f);
-            }
-            else
-            {
-                WLight.intensity = Mathf.MoveTowards(WLight.intensity, 0, 0.5f);
-            }
-            WLight.enabled = WLight.intensity == 0 ? false : true;
-        }
-
-
-
-
-        wantedRPM = (5500.0f * accel) * 0.1f + wantedRPM * 0.9f;
-
-        float rpm = 0.0f;
-        int motorizedWheels = 0;
-        bool floorContact = false;
-        int currentWheel = 0;
-
-        foreach (WheelComponent w in wheels)
-        {
-            WheelHit hit;
-            WheelCollider col = w.collider;
-
-            if (w.drive)
-            {
-                if (!NeutralGear && brake && currentGear < 2)
-                {
-                    rpm += accel * carSetting.idleRPM;
-
-                    /*
-                    if (rpm > 1)
+                    if (controlMode == ControlMode.simple)
                     {
-                        carSetting.shiftCentre.z = Mathf.PingPong(Time.time * (accel * 10), 2.0f) - 1.0f;
+
+                        accel = 0;
+                        brake = false;
+                        shift = false;
+
+                        if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
+                        {
+                            steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
+                            accel = Input.GetAxis("Vertical");
+                            brake = Input.GetButton("Jump");
+                            shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
+                        }
+
                     }
-                    else
+                    else if (controlMode == ControlMode.touch)
                     {
-                        carSetting.shiftCentre.z = 0.0f;
+
+                        if (accelFwd != 0) { accel = accelFwd; } else { accel = accelBack; }
+                        steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
+
                     }
-                    */
 
                 }
                 else
                 {
-                    if (!NeutralGear)
-                    {
-                        rpm += col.rpm;
-                    }else{
-                        rpm += (carSetting.idleRPM*accel);
-                    }
-                }
-
-
-                motorizedWheels++;
-            }
-
-
-
-
-            if (brake || accel < 0.0f)
-            {
-
-                if ((accel < 0.0f) || (brake && (w == wheels[2] || w == wheels[3])))
-                {
-
-                    if (brake && (accel > 0.0f))
-                    {
-                        slip = Mathf.Lerp(slip, 5.0f, accel * 0.01f);
-                    }
-                    else if (speed > 1.0f)
-                    {
-                        slip = Mathf.Lerp(slip, 1.0f, 0.002f);
-                    }
-                    else
-                    {
-                        slip = Mathf.Lerp(slip, 1.0f, 0.02f);
-                    }
-
-
-                    wantedRPM = 0.0f;
-                    col.brakeTorque = carSetting.brakePower;
-                    w.rotation = w_rotate;
-
-                }
-            }
-            else
-            {
-
-
-                col.brakeTorque = accel == 0 || NeutralGear ? col.brakeTorque = 1000 : col.brakeTorque = 0;
-
-
-                slip = speed > 0.0f ?
-    (speed > 100 ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(steer), 0.02f) : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
-    : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
-
-
-                w_rotate = w.rotation;
-
-            }
-
-
-            WheelFrictionCurve fc = col.forwardFriction;
-
-            fc.asymptoteValue = 5000.0f;
-            fc.extremumSlip = 2.0f;
-            fc.asymptoteSlip = 20.0f;
-            fc.stiffness = carSetting.stiffness / (slip + slip2);
-            col.forwardFriction = fc;
-            fc = col.sidewaysFriction;
-            fc.stiffness = carSetting.stiffness / (slip + slip2);
-
-
-            fc.extremumSlip = 0.3f + Mathf.Abs(steer);
-
-            col.sidewaysFriction = fc;
-
-
-
-
-            if (shift && (currentGear > 1 && speed > 50.0f) && shifmotor && Mathf.Abs(steer) < 0.2f)
-            {
-
-                if (powerShift == 0) { shifmotor = false; }
-
-                powerShift = Mathf.MoveTowards(powerShift, 0.0f, Time.deltaTime * 10.0f);
-
-                carSounds.nitro.volume = Mathf.Lerp(carSounds.nitro.volume, 1.0f, Time.deltaTime * 10.0f);
-
-                if (!carSounds.nitro.isPlaying)
-                {
-                    carSounds.nitro.GetComponent<AudioSource>().Play();
-
-                }
-
-
-                curTorque = powerShift > 0 ? carSetting.shiftPower : carSetting.carPower;
-                carParticles.shiftParticle1.emissionRate = Mathf.Lerp(carParticles.shiftParticle1.emissionRate, powerShift > 0 ? 50 : 0, Time.deltaTime * 10.0f);
-                carParticles.shiftParticle2.emissionRate = Mathf.Lerp(carParticles.shiftParticle2.emissionRate, powerShift > 0 ? 50 : 0, Time.deltaTime * 10.0f);
-            }
-            else
-            {
-
-                if (powerShift > 20)
-                {
-                    shifmotor = true;
-                }
-
-                carSounds.nitro.volume = Mathf.MoveTowards(carSounds.nitro.volume, 0.0f, Time.deltaTime * 2.0f);
-
-                if (carSounds.nitro.volume == 0)
-                    carSounds.nitro.Stop();
-
-                powerShift = Mathf.MoveTowards(powerShift, 100.0f, Time.deltaTime * 5.0f);
-                curTorque = carSetting.carPower;
-                carParticles.shiftParticle1.emissionRate = Mathf.Lerp(carParticles.shiftParticle1.emissionRate, 0, Time.deltaTime * 10.0f);
-                carParticles.shiftParticle2.emissionRate = Mathf.Lerp(carParticles.shiftParticle2.emissionRate, 0, Time.deltaTime * 10.0f);
-            }
-
-
-            w.rotation = Mathf.Repeat(w.rotation + Time.deltaTime * col.rpm * 360.0f / 60.0f, 360.0f);
-            w.rotation2 = Mathf.Lerp(w.rotation2,col.steerAngle,0.1f);
-            w.wheel.localRotation = Quaternion.Euler(w.rotation,w.rotation2, 0.0f);
-
-
-
-            Vector3 lp = w.axle.localPosition;
-
-
-            if (col.GetGroundHit(out hit))
-            {
-
-
-                if (carParticles.brakeParticlePerfab)
-                {
-                    if (Particle[currentWheel] == null)
-                    {
-                        Particle[currentWheel] = Instantiate(carParticles.brakeParticlePerfab, w.wheel.position-(Vector3.up*(w.collider.radius-0.5f)), Quaternion.identity) as GameObject;
-                        Particle[currentWheel].name = "WheelParticle";
-                        Particle[currentWheel].transform.parent = transform;
-                        Particle[currentWheel].AddComponent<AudioSource>();
-                        Particle[currentWheel].GetComponent<AudioSource>().maxDistance = 50;
-                        Particle[currentWheel].GetComponent<AudioSource>().spatialBlend = 1;
-                        Particle[currentWheel].GetComponent<AudioSource>().dopplerLevel = 5;
-                        Particle[currentWheel].GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Custom;
-                    }
-
-
-                    var pc = Particle[currentWheel].GetComponent<ParticleSystem>();
-                    bool WGrounded = false;
-
-
-                    for (int i = 0; i < carSetting.hitGround.Length; i++)
-                    {
-
-                        if (hit.collider.CompareTag(carSetting.hitGround[i].tag))
-                        {
-                            WGrounded = carSetting.hitGround[i].grounded;
-
-                            if ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.5f) && speed > 1)
-                            {
-                                Particle[currentWheel].GetComponent<AudioSource>().clip = carSetting.hitGround[i].brakeSound;
-                            }
-                            else if (Particle[currentWheel].GetComponent<AudioSource>().clip != carSetting.hitGround[i].groundSound && !Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
-                            {
-
-                                Particle[currentWheel].GetComponent<AudioSource>().clip = carSetting.hitGround[i].groundSound;
-                            }
-
-                            Particle[currentWheel].GetComponent<ParticleSystem>().startColor = carSetting.hitGround[i].brakeColor;
-
-                        }
-
-
-                    }
-
-
-                    if (WGrounded && speed > 5 && !brake)
-                    {
-
-                        pc.enableEmission = true;
-
-                        Particle[currentWheel].GetComponent<AudioSource>().volume = 0.5f;
-
-                        if (!Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
-                            Particle[currentWheel].GetComponent<AudioSource>().Play();
-
-                    }
-                    else if ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.6f) && speed > 1)
-                    {
-
-                        if ((accel < 0.0f) || ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.6f) && (w == wheels[2] || w == wheels[3])))
-                        {
-
-                            if (!Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
-                                Particle[currentWheel].GetComponent<AudioSource>().Play();
-                            pc.enableEmission = true;
-                            Particle[currentWheel].GetComponent<AudioSource>().volume = 10;
-
-                        }
-
-                    }
-                    else
-                    {
-
-                        pc.enableEmission = false;
-                        Particle[currentWheel].GetComponent<AudioSource>().volume = Mathf.Lerp(Particle[currentWheel].GetComponent<AudioSource>().volume, 0, Time.deltaTime * 10.0f);
-                    }
-
-                }
-
-
-                lp.y -= Vector3.Dot(w.axle.position - hit.point, Vector3.up / transform.lossyScale.x) - (col.radius);
-                lp.y = Mathf.Clamp(lp.y, -10.0f, w.pos_y);
-                floorContact = floorContact || (w.drive);
-
-
-            }
-            else
-            {
-
-                if (Particle[currentWheel] != null)
-                {
-                    var pc = Particle[currentWheel].GetComponent<ParticleSystem>();
-                    pc.enableEmission = false;
+                    accel = 0.0f;
+                    steer = 0.0f;
+                    brake = false;
+                    shift = false;
                 }
 
 
 
-                lp.y = w.startPos.y - carWheels.setting.Distance;
-
-                myRigidbody.AddForce(Vector3.down * 5000);
-
-            }
-
-            currentWheel++;
-            w.axle.localPosition = new Vector3(w.axle.localPosition.x, lp.y, w.axle.localPosition.z);
-
-
-        }
-
-        if (motorizedWheels > 1)
-        {
-            rpm = rpm / motorizedWheels;
-        }
-
-
-        motorRPM = 0.95f * motorRPM + 0.05f * Mathf.Abs(rpm * carSetting.gears[currentGear]);
-        if (motorRPM > 5500.0f) motorRPM = 5200.0f;
-
-
-        int index = (int)(motorRPM / efficiencyTableStep);
-        if (index >= efficiencyTable.Length) index = efficiencyTable.Length - 1;
-        if (index < 0) index = 0;
+                if (!carWheels.wheels.frontWheelDrive && !carWheels.wheels.backWheelDrive)
+                    accel = 0.0f;
 
 
 
-        float newTorque = curTorque * carSetting.gears[currentGear] * efficiencyTable[index];
+                if (carSetting.carSteer)
+                    carSetting.carSteer.localEulerAngles = new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (steer * -120.0f));
 
-        foreach (WheelComponent w in wheels)
-        {
-            WheelCollider col = w.collider;
 
-            if (w.drive)
-            {
 
-                if (Mathf.Abs(col.rpm) > Mathf.Abs(wantedRPM))
+                if (carSetting.automaticGear && (currentGear == 1) && (accel < 0.0f))
+                {
+                    if (speed < 5.0f)
+                        ShiftDown();
+
+
+                }
+                else if (carSetting.automaticGear && (currentGear == 0) && (accel > 0.0f))
+                {
+                    if (speed < 5.0f)
+                        ShiftUp();
+
+                }
+                else if (carSetting.automaticGear && (motorRPM > carSetting.shiftUpRPM) && (accel > 0.0f) && speed > 10.0f && !brake)
                 {
 
-                    col.motorTorque = 0;
+                    ShiftUp();
+
+                }
+                else if (carSetting.automaticGear && (motorRPM < carSetting.shiftDownRPM) && (currentGear > 1))
+                {
+                    ShiftDown();
+                }
+
+
+
+                if (speed < 1.0f) Backward = true;
+
+
+
+                if (currentGear == 0 && Backward == true)
+                {
+                    //  carSetting.shiftCentre.z = -accel / -5;
+                    if (speed < carSetting.gears[0] * -10)
+                        accel = -accel;
                 }
                 else
                 {
-                    // 
-                    float curTorqueCol = col.motorTorque;
+                    Backward = false;
+                    //   if (currentGear > 0)
+                    //   carSetting.shiftCentre.z = -(accel / currentGear) / -5;
+                }
 
-                    if (!brake && accel != 0 && NeutralGear == false)
+                //  carSetting.shiftCentre.x = -Mathf.Clamp(steer * (speed / 100), -0.03f, 0.03f);
+
+                // Brake Lights
+
+                foreach (Light brakeLight in carLights.brakeLights)
+                {
+                    if (brake || accel < 0 || speed < 1.0f)
                     {
-                        if ((speed < carSetting.LimitForwardSpeed && currentGear > 0) ||
-                            (speed < carSetting.LimitBackwardSpeed && currentGear == 0))
-                        {
+                        brakeLight.intensity = Mathf.MoveTowards(brakeLight.intensity, 8, 0.5f);
+                    }
+                    else
+                    {
+                        brakeLight.intensity = Mathf.MoveTowards(brakeLight.intensity, 0, 0.5f);
 
-                            col.motorTorque = curTorqueCol * 0.9f + newTorque * 1.0f;
+                    }
+
+                    brakeLight.enabled = brakeLight.intensity == 0 ? false : true;
+                }
+
+
+                // Reverse Lights
+
+                foreach (Light WLight in carLights.reverseLights)
+                {
+                    if (speed > 2.0f && currentGear == 0)
+                    {
+                        WLight.intensity = Mathf.MoveTowards(WLight.intensity, 8, 0.5f);
+                    }
+                    else
+                    {
+                        WLight.intensity = Mathf.MoveTowards(WLight.intensity, 0, 0.5f);
+                    }
+                    WLight.enabled = WLight.intensity == 0 ? false : true;
+                }
+
+
+
+
+
+                wantedRPM = (5500.0f * accel) * 0.1f + wantedRPM * 0.9f;
+
+                float rpm = 0.0f;
+                int motorizedWheels = 0;
+                bool floorContact = false;
+                int currentWheel = 0;
+
+                foreach (WheelComponent w in wheels)
+                {
+                    WheelHit hit;
+                    WheelCollider col = w.collider;
+
+                    if (w.drive)
+                    {
+                        if (!NeutralGear && brake && currentGear < 2)
+                        {
+                            rpm += accel * carSetting.idleRPM;
+
+                            /*
+                            if (rpm > 1)
+                            {
+                                carSetting.shiftCentre.z = Mathf.PingPong(Time.time * (accel * 10), 2.0f) - 1.0f;
+                            }
+                            else
+                            {
+                                carSetting.shiftCentre.z = 0.0f;
+                            }
+                            */
+
                         }
                         else
                         {
-                            col.motorTorque = 0;
-                            col.brakeTorque = 2000;
+                            if (!NeutralGear)
+                            {
+                                rpm += col.rpm;
+                            }
+                            else
+                            {
+                                rpm += (carSetting.idleRPM * accel);
+                            }
                         }
+
+
+                        motorizedWheels++;
+                    }
+
+
+
+
+                    if (brake || accel < 0.0f)
+                    {
+
+                        if ((accel < 0.0f) || (brake && (w == wheels[2] || w == wheels[3])))
+                        {
+
+                            if (brake && (accel > 0.0f))
+                            {
+                                slip = Mathf.Lerp(slip, 5.0f, accel * 0.01f);
+                            }
+                            else if (speed > 1.0f)
+                            {
+                                slip = Mathf.Lerp(slip, 1.0f, 0.002f);
+                            }
+                            else
+                            {
+                                slip = Mathf.Lerp(slip, 1.0f, 0.02f);
+                            }
+
+
+                            wantedRPM = 0.0f;
+                            col.brakeTorque = carSetting.brakePower;
+                            w.rotation = w_rotate;
+
+                        }
+                    }
+                    else
+                    {
+
+
+                        col.brakeTorque = accel == 0 || NeutralGear ? col.brakeTorque = 1000 : col.brakeTorque = 0;
+
+
+                        slip = speed > 0.0f ?
+            (speed > 100 ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(steer), 0.02f) : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
+            : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
+
+
+                        w_rotate = w.rotation;
+
+                    }
+
+
+                    WheelFrictionCurve fc = col.forwardFriction;
+
+                    fc.asymptoteValue = 5000.0f;
+                    fc.extremumSlip = 2.0f;
+                    fc.asymptoteSlip = 20.0f;
+                    fc.stiffness = carSetting.stiffness / (slip + slip2);
+                    col.forwardFriction = fc;
+                    fc = col.sidewaysFriction;
+                    fc.stiffness = carSetting.stiffness / (slip + slip2);
+
+
+                    fc.extremumSlip = 0.3f + Mathf.Abs(steer);
+
+                    col.sidewaysFriction = fc;
+
+
+
+
+                    if (shift && (currentGear > 1 && speed > 50.0f) && shifmotor && Mathf.Abs(steer) < 0.2f)
+                    {
+
+                        if (powerShift == 0) { shifmotor = false; }
+
+                        powerShift = Mathf.MoveTowards(powerShift, 0.0f, Time.deltaTime * 10.0f);
+
+                        carSounds.nitro.volume = Mathf.Lerp(carSounds.nitro.volume, 1.0f, Time.deltaTime * 10.0f);
+
+                        if (!carSounds.nitro.isPlaying)
+                        {
+                            carSounds.nitro.GetComponent<AudioSource>().Play();
+
+                        }
+
+
+                        curTorque = powerShift > 0 ? carSetting.shiftPower : carSetting.carPower;
+                        carParticles.shiftParticle1.emissionRate = Mathf.Lerp(carParticles.shiftParticle1.emissionRate, powerShift > 0 ? 50 : 0, Time.deltaTime * 10.0f);
+                        carParticles.shiftParticle2.emissionRate = Mathf.Lerp(carParticles.shiftParticle2.emissionRate, powerShift > 0 ? 50 : 0, Time.deltaTime * 10.0f);
+                    }
+                    else
+                    {
+
+                        if (powerShift > 20)
+                        {
+                            shifmotor = true;
+                        }
+
+                        carSounds.nitro.volume = Mathf.MoveTowards(carSounds.nitro.volume, 0.0f, Time.deltaTime * 2.0f);
+
+                        if (carSounds.nitro.volume == 0)
+                            carSounds.nitro.Stop();
+
+                        powerShift = Mathf.MoveTowards(powerShift, 100.0f, Time.deltaTime * 5.0f);
+                        curTorque = carSetting.carPower;
+                        carParticles.shiftParticle1.emissionRate = Mathf.Lerp(carParticles.shiftParticle1.emissionRate, 0, Time.deltaTime * 10.0f);
+                        carParticles.shiftParticle2.emissionRate = Mathf.Lerp(carParticles.shiftParticle2.emissionRate, 0, Time.deltaTime * 10.0f);
+                    }
+
+
+                    w.rotation = Mathf.Repeat(w.rotation + Time.deltaTime * col.rpm * 360.0f / 60.0f, 360.0f);
+                    w.rotation2 = Mathf.Lerp(w.rotation2, col.steerAngle, 0.1f);
+                    w.wheel.localRotation = Quaternion.Euler(w.rotation, w.rotation2, 0.0f);
+
+
+
+                    Vector3 lp = w.axle.localPosition;
+
+
+                    if (col.GetGroundHit(out hit))
+                    {
+
+
+                        if (carParticles.brakeParticlePerfab)
+                        {
+                            if (Particle[currentWheel] == null)
+                            {
+                                Particle[currentWheel] = Instantiate(carParticles.brakeParticlePerfab, w.wheel.position - (Vector3.up * (w.collider.radius - 0.5f)), Quaternion.identity) as GameObject;
+                                Particle[currentWheel].name = "WheelParticle";
+                                Particle[currentWheel].transform.parent = transform;
+                                Particle[currentWheel].AddComponent<AudioSource>();
+                                Particle[currentWheel].GetComponent<AudioSource>().maxDistance = 50;
+                                Particle[currentWheel].GetComponent<AudioSource>().spatialBlend = 1;
+                                Particle[currentWheel].GetComponent<AudioSource>().dopplerLevel = 5;
+                                Particle[currentWheel].GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Custom;
+                            }
+
+
+                            var pc = Particle[currentWheel].GetComponent<ParticleSystem>();
+                            bool WGrounded = false;
+
+
+                            for (int i = 0; i < carSetting.hitGround.Length; i++)
+                            {
+
+                                if (hit.collider.CompareTag(carSetting.hitGround[i].tag))
+                                {
+                                    WGrounded = carSetting.hitGround[i].grounded;
+
+                                    if ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.5f) && speed > 1)
+                                    {
+                                        Particle[currentWheel].GetComponent<AudioSource>().clip = carSetting.hitGround[i].brakeSound;
+                                    }
+                                    else if (Particle[currentWheel].GetComponent<AudioSource>().clip != carSetting.hitGround[i].groundSound && !Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
+                                    {
+
+                                        Particle[currentWheel].GetComponent<AudioSource>().clip = carSetting.hitGround[i].groundSound;
+                                    }
+
+                                    Particle[currentWheel].GetComponent<ParticleSystem>().startColor = carSetting.hitGround[i].brakeColor;
+
+                                }
+
+
+                            }
+
+
+                            if (WGrounded && speed > 5 && !brake)
+                            {
+
+                                pc.enableEmission = true;
+
+                                Particle[currentWheel].GetComponent<AudioSource>().volume = 0.5f;
+
+                                if (!Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
+                                    Particle[currentWheel].GetComponent<AudioSource>().Play();
+
+                            }
+                            else if ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.6f) && speed > 1)
+                            {
+
+                                if ((accel < 0.0f) || ((brake || Mathf.Abs(hit.sidewaysSlip) > 0.6f) && (w == wheels[2] || w == wheels[3])))
+                                {
+
+                                    if (!Particle[currentWheel].GetComponent<AudioSource>().isPlaying)
+                                        Particle[currentWheel].GetComponent<AudioSource>().Play();
+                                    pc.enableEmission = true;
+                                    Particle[currentWheel].GetComponent<AudioSource>().volume = 10;
+
+                                }
+
+                            }
+                            else
+                            {
+
+                                pc.enableEmission = false;
+                                Particle[currentWheel].GetComponent<AudioSource>().volume = Mathf.Lerp(Particle[currentWheel].GetComponent<AudioSource>().volume, 0, Time.deltaTime * 10.0f);
+                            }
+
+                        }
+
+
+                        lp.y -= Vector3.Dot(w.axle.position - hit.point, Vector3.up / transform.lossyScale.x) - (col.radius);
+                        lp.y = Mathf.Clamp(lp.y, -10.0f, w.pos_y);
+                        floorContact = floorContact || (w.drive);
 
 
                     }
                     else
                     {
-                        col.motorTorque = 0;
+
+                        if (Particle[currentWheel] != null)
+                        {
+                            var pc = Particle[currentWheel].GetComponent<ParticleSystem>();
+                            pc.enableEmission = false;
+                        }
+
+
+
+                        lp.y = w.startPos.y - carWheels.setting.Distance;
+
+                        myRigidbody.AddForce(Vector3.down * 5000);
 
                     }
+
+                    currentWheel++;
+                    w.axle.localPosition = new Vector3(w.axle.localPosition.x, lp.y, w.axle.localPosition.z);
+
+
+                }
+
+                if (motorizedWheels > 1)
+                {
+                    rpm = rpm / motorizedWheels;
+                }
+
+
+                motorRPM = 0.95f * motorRPM + 0.05f * Mathf.Abs(rpm * carSetting.gears[currentGear]);
+                if (motorRPM > 5500.0f) motorRPM = 5200.0f;
+
+
+                int index = (int)(motorRPM / efficiencyTableStep);
+                if (index >= efficiencyTable.Length) index = efficiencyTable.Length - 1;
+                if (index < 0) index = 0;
+
+
+
+                float newTorque = curTorque * carSetting.gears[currentGear] * efficiencyTable[index];
+
+                foreach (WheelComponent w in wheels)
+                {
+                    WheelCollider col = w.collider;
+
+                    if (w.drive)
+                    {
+
+                        if (Mathf.Abs(col.rpm) > Mathf.Abs(wantedRPM))
+                        {
+
+                            col.motorTorque = 0;
+                        }
+                        else
+                        {
+                            // 
+                            float curTorqueCol = col.motorTorque;
+
+                            if (!brake && accel != 0 && NeutralGear == false)
+                            {
+                                if ((speed < carSetting.LimitForwardSpeed && currentGear > 0) ||
+                                    (speed < carSetting.LimitBackwardSpeed && currentGear == 0))
+                                {
+
+                                    col.motorTorque = curTorqueCol * 0.9f + newTorque * 1.0f;
+                                }
+                                else
+                                {
+                                    col.motorTorque = 0;
+                                    col.brakeTorque = 2000;
+                                }
+
+
+                            }
+                            else
+                            {
+                                col.motorTorque = 0;
+
+                            }
+                        }
+
+                    }
+
+
+
+
+
+                    if (brake || slip2 > 2.0f)
+                    {
+                        col.steerAngle = Mathf.Lerp(col.steerAngle, steer * w.maxSteer, 0.02f);
+                    }
+                    else
+                    {
+
+                        float SteerAngle = Mathf.Clamp(speed / carSetting.maxSteerAngle, 1.0f, carSetting.maxSteerAngle);
+                        col.steerAngle = steer * (w.maxSteer / SteerAngle);
+
+
+                    }
+
+                }
+
+
+
+
+                // calculate pitch (keep it within reasonable bounds)
+                Pitch = Mathf.Clamp(1.2f + ((motorRPM - carSetting.idleRPM) / (carSetting.shiftUpRPM - carSetting.idleRPM)), 1.0f, 10.0f);
+
+                shiftTime = Mathf.MoveTowards(shiftTime, 0.0f, 0.1f);
+
+                if (Pitch == 1)
+                {
+                    carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.0f, 0.1f);
+                    carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
+                    carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.1f);
+
+                }
+                else
+                {
+
+                    carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.8f - Pitch, 0.1f);
+
+
+                    if ((Pitch > PitchDelay || accel > 0) && shiftTime == 0.0f)
+                    {
+                        carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.0f, 0.2f);
+                        carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 1.0f, 0.1f);
+                    }
+                    else
+                    {
+                        carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
+                        carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.2f);
+                    }
+
+
+
+
+                    carSounds.HighEngine.pitch = Pitch;
+                    carSounds.LowEngine.pitch = Pitch;
+
+                    PitchDelay = Pitch;
                 }
 
             }
-
-
-
-
-
-            if (brake || slip2 > 2.0f)
-            {
-                col.steerAngle = Mathf.Lerp(col.steerAngle, steer * w.maxSteer, 0.02f);
-            }
-            else
-            {
-
-                float SteerAngle = Mathf.Clamp(speed / carSetting.maxSteerAngle, 1.0f, carSetting.maxSteerAngle);
-                col.steerAngle = steer * (w.maxSteer / SteerAngle);
-
-
-            }
-
         }
-
-
-
-
-        // calculate pitch (keep it within reasonable bounds)
-        Pitch = Mathf.Clamp(1.2f + ((motorRPM - carSetting.idleRPM) / (carSetting.shiftUpRPM - carSetting.idleRPM)), 1.0f, 10.0f);
-
-        shiftTime = Mathf.MoveTowards(shiftTime, 0.0f, 0.1f);
-
-        if (Pitch == 1)
-        {
-            carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.0f, 0.1f);
-            carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
-            carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.1f);
-
-        }
-        else
-        {
-
-            carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.8f - Pitch, 0.1f);
-
-
-            if ((Pitch > PitchDelay || accel > 0) && shiftTime == 0.0f)
-            {
-                carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.0f, 0.2f);
-                carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 1.0f, 0.1f);
-            }
-            else
-            {
-                carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
-                carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.2f);
-            }
-
-
-
-
-            carSounds.HighEngine.pitch = Pitch;
-            carSounds.LowEngine.pitch = Pitch;
-
-            PitchDelay = Pitch;
-        }
-
-    }
-
+    
 
 
 
