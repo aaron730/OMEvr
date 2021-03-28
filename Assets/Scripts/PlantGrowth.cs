@@ -39,7 +39,7 @@ public class PlantGrowth : MonoBehaviour
         {
           //times 24.6597 by n to divide into n days(longer day cycle)
             growthStageInHoursOfDay[i-1] = Math.Round((float)(24.6597 / i),0);
-            Debug.Log(growthStageInHoursOfDay[i - 1]);
+            
         }
         
         
