@@ -14,7 +14,8 @@ public class Scanner : MonoBehaviour
     public void ScanRock(GameObject rock)
     {
         MarsRock script = rock.GetComponent<MarsRock>();
-        MonitorScript.DisplayText("Rock contains " + script.Type);
+        MonitorScript.DisplayText($"Rock contains {script.Type}\n" +
+            $"Weighs {script.Weight}kg");
     }
 
     public void RemoveRock()

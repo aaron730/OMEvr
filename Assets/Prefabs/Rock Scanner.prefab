@@ -47,7 +47,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251618018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 6000
+  m_DynamicPixelsPerUnit: 4000
   m_PresetInfoIsWorld: 1
 --- !u!114 &4439277886726284061
 MonoBehaviour:
@@ -366,19 +366,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Place a rock on the scanner!
---- !u!114 &7480423621682551225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5338021626516933783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3046866f2955cbe428a57c4e361bb5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MonitorScript: {fileID: 4439277885950183605}
 --- !u!65 &881347279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -392,6 +379,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.1982155, y: 2.5817816, z: 18.753468}
   m_Center: {x: 0.009592995, y: 0.7908909, z: -0.17819479}
+--- !u!114 &7480423621682551225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338021626516933783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3046866f2955cbe428a57c4e361bb5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonitorScript: {fileID: 4439277885950183605}
 --- !u!1001 &4439277885950183600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,7 +541,7 @@ PrefabInstance:
     - target: {fileID: -1472389151538688185, guid: 4829f7495bc69d741a4c5c268617da97, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 03eb0e937587408479df47fb4287dd07, type: 2}
+      objectReference: {fileID: 2100000, guid: b683fb66a4fc0b342bbb4f482ae80f49, type: 2}
     - target: {fileID: 67217142486607529, guid: 4829f7495bc69d741a4c5c268617da97, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 6258528941499928471, guid: 4829f7495bc69d741a4c5c268617da97, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f4451afa34ae58c499205e072fdef7fa, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ec0ac2223ad6e548b05760ced8774a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4829f7495bc69d741a4c5c268617da97, type: 3}
 --- !u!1 &5338021626516933783 stripped
