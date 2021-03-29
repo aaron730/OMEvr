@@ -491,7 +491,7 @@ public class BuggyControl : MonoBehaviour
         
 
 
-        if ((isInCarRadius() && Input.GetKeyDown(KeyCode.F) || isGripping) || carSetting.BuggyCamera.enabled && !isInCar)
+        if ((isInCarRadius() && Input.GetKeyDown(KeyCode.F) || isGripping) || carSetting.BuggyCamera.enabled)
         {
             GetInCar();
             
