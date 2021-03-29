@@ -6,6 +6,10 @@ public class Scanner : MonoBehaviour
 {
     public Monitor MonitorScript;
     
+    public void Scanning()
+    {
+        MonitorScript.DisplayText("Scanning...");
+    }
 
     public void ScanRock(GameObject rock)
     {

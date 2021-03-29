@@ -9,8 +9,7 @@ public class SortingBasketTrigger : MonoBehaviour
     {
         if(other.tag == "MarsRock")
         {
-            MarsRock rock = other.GetComponent<MarsRock>();
-            SortingBasketScript.CheckRock(rock.Type);
+            SortingBasketScript.CheckRock(other.gameObject);
         }
         
     }
