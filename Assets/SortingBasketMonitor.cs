@@ -12,6 +12,11 @@ public class SortingBasketMonitor : MonoBehaviour
     private float totalMass = 0;
     private float capacity = 2;
 
+    public void Start()
+    {
+        MassText.text = $"Mass: {0}kg / {capacity}kg";
+    }
+
     public void Correct(GameObject rock)
     {
         SetLightColor(Color.green);

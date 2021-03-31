@@ -358,11 +358,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &441611061 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8096502067868336860, guid: b8e3cb65825648348b3fa7bee92ea985, type: 3}
-  m_PrefabInstance: {fileID: 1925841322725972185}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &616718808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,85 +586,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
---- !u!1 &1751610384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1751610385}
-  - component: {fileID: 1751610387}
-  - component: {fileID: 1751610386}
-  m_Layer: 5
-  m_Name: Mass Text (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1751610385
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751610384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 441611061}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0006, y: 0.8417}
-  m_SizeDelta: {x: 3.7229, y: 0.4213}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1751610386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751610384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8828201, b: 0.90588236, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 42
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Rocket Cargo Hold
---- !u!222 &1751610387
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751610384}
-  m_CullTransparentMesh: 1
 --- !u!1 &2099572859
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,14 +857,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sorting System
       objectReference: {fileID: 0}
-    - target: {fileID: 8096502067868336862, guid: b8e3cb65825648348b3fa7bee92ea985, type: 3}
-      propertyPath: m_DynamicPixelsPerUnit
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8096502067997544947, guid: b8e3cb65825648348b3fa7bee92ea985, type: 3}
-      propertyPath: m_Text
-      value: Mass
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8e3cb65825648348b3fa7bee92ea985, type: 3}
 --- !u!1001 &3346171632349024354
@@ -1072,18 +980,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4184339705769471835, guid: 74519eec00bdc74418167df2afef25be, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184339705769471835, guid: 74519eec00bdc74418167df2afef25be, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.016
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184339705769471835, guid: 74519eec00bdc74418167df2afef25be, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.016
-      objectReference: {fileID: 0}
     - target: {fileID: 4439277885966768971, guid: 74519eec00bdc74418167df2afef25be, type: 3}
       propertyPath: m_RootOrder
       value: 11
