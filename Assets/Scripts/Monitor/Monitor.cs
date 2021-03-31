@@ -7,11 +7,6 @@ public class Monitor : MonoBehaviour
 {
     public Text MonitorText;
 
-    private void Start()
-    {
-        
-    }
-
     public void SetText(string text)
     {
         MonitorText.text = text;
