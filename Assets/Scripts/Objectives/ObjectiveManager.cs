@@ -1,26 +1,48 @@
 // Add this script to the GoalManager GameObject. It keeps track of all goals.
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectiveManager : MonoBehaviour
 {
 
     public Objective[] objectives;
     
+    public Canvas VRCanvas;
+    public Canvas TwoDCanvas;
+    private Text VRText;
+    private Text TwoDText;
     
     void Awake()
     {
-
         
+        VRText = VRCanvas.GetComponentInChildren<Text>();
+        TwoDText = TwoDCanvas.GetComponentInChildren<Text>();
+
+        TwoDText.text = "Hello";
+        TwoDText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        VRText.horizontalOverflow = HorizontalWrapMode.Overflow;
         objectives = GetComponents<Objective>();
         
         
     }
 
+    private IEnumerator Delay(int i)
+    {
+        yield return new WaitForSecondsRealtime(i);
+    }
+    
     void OnGUI()
     {
         foreach (var objective in objectives)
         {
-            objective.DrawHUD();
+            for(int i = 0; i <= 5; i++)
+            {
+                TwoDText.text = objective.DrawHUD(i);
+                VRText.text = objective.DrawHUD(i);
+                Delay(3);
+            }
+           
         }
        
     }
@@ -47,11 +69,11 @@ public abstract class Objective : MonoBehaviour
 {
     public abstract bool IsAchieved();
     public abstract void Complete();
-    public abstract void DrawHUD();
+    public abstract string DrawHUD(int callNumber);
 }
 
 
-// Add this to GoalManager to run a "collect the coins" goal:
+
 /*public class CollectCoins : Goal
 {
 
