@@ -3,20 +3,30 @@ using UnityEngine;
 public class Welcome : Objective
 {
 
-   
-
+    public GameObject chalkboard;
+    public GameObject objective;
     
+    
+    private bool isViewing = false;
+    private bool seenDialogue = false;
 
     void Awake()
     {
+        objective.transform.position = chalkboard.transform.position;
+        
         // playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+        
 
     }
 
     public override bool IsAchieved()
     {
         // return (playerStats.kills >= requiredKills);\
-        return true;
+        if (isViewing && seenDialogue)
+            return true;
+        else
+            return false;
     }
 
     public override void Complete()
@@ -36,11 +46,21 @@ public class Welcome : Objective
                 return "Your mission as the only living inhabitant of Mars is research and survival.;";
 
             case 3:
-                return "In order to track your progress in completing tasks, view whiteboard.";
+                seenDialogue = true;
+                return "In order to track your progress in completing tasks, view the whiteboard.";
 
+            case 4:
+                return "";
+            default:
+                return "";
         }
-        string stringDisplay;
-        stringDisplay = "Hello Welcome to the Orbital Mars Experience";
-        return stringDisplay;
+        
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        isViewing = true;
     }
 }

@@ -12,44 +12,57 @@ public class ObjectiveManager : MonoBehaviour
     public Canvas TwoDCanvas;
     private Text VRText;
     private Text TwoDText;
-    
+    public AudioSource notificationSource;
+
     void Awake()
     {
+        
         
         VRText = VRCanvas.GetComponentInChildren<Text>();
         TwoDText = TwoDCanvas.GetComponentInChildren<Text>();
 
-        TwoDText.text = "Hello";
+        
         TwoDText.horizontalOverflow = HorizontalWrapMode.Overflow;
         VRText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        TwoDText.color = new Color(255, 255, 255);
         objectives = GetComponents<Objective>();
-        
+        StartCoroutine(DelayUpdate());
         
     }
 
-    private IEnumerator Delay(int i)
+    private IEnumerator DelayUpdate()
     {
-        yield return new WaitForSecondsRealtime(i);
+        foreach (var objective in objectives)
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                TwoDText.text = objective.DrawHUD(i);
+                VRText.text = objective.DrawHUD(i);
+                if(i == 3)
+                {
+                    notificationSource.Play();
+                }
+                yield return new WaitForSecondsRealtime(3);
+                
+            }
+
+
+            
+        }
+        
+        yield return null;
     }
     
     void OnGUI()
     {
-        foreach (var objective in objectives)
-        {
-            for(int i = 0; i <= 5; i++)
-            {
-                TwoDText.text = objective.DrawHUD(i);
-                VRText.text = objective.DrawHUD(i);
-                Delay(3);
-            }
-           
-        }
-       
+
+        
+        
     }
 
     void Update()
     {
-        
+
 
         foreach (var objective in objectives)
         {
