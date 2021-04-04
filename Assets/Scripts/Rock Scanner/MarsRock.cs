@@ -13,4 +13,16 @@ public class MarsRock : MonoBehaviour
         Geothite,
         Gypsum
     }
+
+    public void RandomizeType()
+    {
+        Type = GetRandomEnum<RockType>();
+        Debug.Log(Type);
+    }
+    static T GetRandomEnum<T>()
+    {
+        System.Array A = System.Enum.GetValues(typeof(T));
+        T V = (T)A.GetValue(Random.Range(0, A.Length));
+        return V;
+    }
 }
