@@ -14,7 +14,7 @@ public class ScannerTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Entered");
-        if(other.tag == "MarsRock")
+        if(other.tag == "IntroObject")
         {
             if (!colliders.Contains(other)) { colliders.Add(other); }
             if(colliders.Count > 1)
