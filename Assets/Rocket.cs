@@ -14,20 +14,22 @@ public class Rocket : MonoBehaviour
     }
     public void Launch()
     {
-        IsLaunched = true;
         StartCoroutine(LaunchSequence());
     }
 
     public IEnumerator LaunchSequence()
     {
-        var timer = 10;
+        IsLaunched = true;
+        var timer = 3;
 
         while (timer > 0)
         {
             Debug.Log(timer);
-            rb.AddForce(Vector3.up * 100000);
+            rb.AddForce(Vector3.up * 50000);
             timer--;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.5f);
         }
+
+        //rb.isKinematic = true;
     }
 }

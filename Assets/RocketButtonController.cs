@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class RocketButtonController : MonoBehaviour
 {
-    public Rocket Rocket;
+    public LaunchStation LaunchStation;
 
     public void ButtonLaunch()
     {
-        if (!Rocket.IsLaunched)
-        {
-            Rocket.Launch();
-        }
-
+        LaunchStation.Launch();
     }
 }

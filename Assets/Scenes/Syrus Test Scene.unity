@@ -628,6 +628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675668576}
+  - component: {fileID: 675668577}
   m_Layer: 0
   m_Name: Launch Station
   m_TagString: Untagged
@@ -652,6 +653,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675668577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675668575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643dc0e82785d7e44895e57dfbebf69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rocket: {fileID: 71444654}
+  RocketMonitor: {fileID: 1377788714918293948}
 --- !u!1001 &864435740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1091,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb99f464eea5624ab2312ee7b84eb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rocket: {fileID: 71444654}
+  LaunchStation: {fileID: 675668577}
 --- !u!4 &4000011516970077
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,6 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2741b8de9833de24c91e0014220359aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreenText: {fileID: 2296706449203093274}
 --- !u!4 &1753363867335879425
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,7 +1512,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 400
+  m_DynamicPixelsPerUnit: 900
   m_PresetInfoIsWorld: 1
 --- !u!1 &2296706449203093272
 GameObject:
@@ -1543,13 +1559,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 42
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hello world
+  m_Text: Ready to Launch
 --- !u!224 &2296706449203093275
 RectTransform:
   m_ObjectHideFlags: 0
