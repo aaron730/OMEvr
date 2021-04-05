@@ -5,21 +5,23 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     private Rigidbody rb;
+    public bool IsLaunched;
 
     public void Start()
     {
+        IsLaunched = false;
         rb = GetComponent<Rigidbody>();
-        Launch();
     }
     public void Launch()
     {
+        IsLaunched = true;
         StartCoroutine(LaunchSequence());
     }
 
     public IEnumerator LaunchSequence()
     {
         var timer = 10;
-        yield return new WaitForSeconds(5);
+
         while (timer > 0)
         {
             Debug.Log(timer);
