@@ -12250,7 +12250,7 @@ GameObject:
   - component: {fileID: 458898}
   - component: {fileID: 13797484}
   m_Layer: 0
-  m_Name: Skin_Mesh
+  m_Name: SkinMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13756,6 +13756,7 @@ GameObject:
   - component: {fileID: 5439408}
   - component: {fileID: 11435800}
   - component: {fileID: 11421460}
+  - component: {fileID: 999518542}
   m_Layer: 0
   m_Name: Buggy_1
   m_TagString: Untagged
@@ -13770,7 +13771,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195296}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 385.07, y: 1.99, z: 111.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13782,7 +13783,7 @@ Transform:
   - {fileID: 9015650773958470173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &5439408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13817,32 +13818,27 @@ MonoBehaviour:
     showNormalGizmos: 0
     carSteer: {fileID: 479668}
     hitGround:
-    - tag: Street
+    - tag: MarsRock
       grounded: 0
       brakeSound: {fileID: 8300000, guid: 334cc9dcd313b2f48bda705e3eefc2df, type: 3}
       groundSound: {fileID: 0}
-      brakeColor: {r: 0.6727941, g: 0.72763693, b: 0.75, a: 0.78431374}
-    - tag: Grass
-      grounded: 1
-      brakeSound: {fileID: 8300000, guid: 48557c3f3613c2e4babd9ef286d0b659, type: 3}
-      groundSound: {fileID: 8300000, guid: e74738166dc243747b9979b0cd3b6875, type: 3}
-      brakeColor: {r: 0.8088235, g: 0.6295862, b: 0.24383649, a: 0.78431374}
+      brakeColor: {r: 0.6981132, g: 0.44774157, b: 0.036222856, a: 0.78431374}
     cameraSwitchView:
     - {fileID: 469562}
     - {fileID: 475292}
     - {fileID: 429978}
-    closeToCar: {fileID: 0}
+    closeToCar: {fileID: 999518542}
     VRPlayer: {fileID: 0}
     TwoDPlayer: {fileID: 0}
-    Driver: {fileID: 0}
-    Buggy: {fileID: 0}
+    Driver: {fileID: 120682}
+    Buggy: {fileID: 195296}
     BuggyCamera: {fileID: 0}
     hand: {fileID: 0}
     springs: 25000
-    dampers: 1500
-    carPower: 120
+    dampers: 2000
+    carPower: 180
     shiftPower: 150
-    brakePower: 12000
+    brakePower: 18000
     shiftCentre: {x: 0, y: -0.05, z: 0}
     maxSteerAngle: 30
     shiftDownRPM: 2000
@@ -13857,7 +13853,7 @@ MonoBehaviour:
     - 3
     - 2
     - 1
-    LimitBackwardSpeed: 60
+    LimitBackwardSpeed: 190
     LimitForwardSpeed: 220
   carWheels:
     wheels:
@@ -13928,6 +13924,19 @@ MonoBehaviour:
     SpringDown: {fileID: 408930}
   - SpringUp: {fileID: 499078}
     SpringDown: {fileID: 405292}
+--- !u!65 &999518542
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 2, z: 5}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1 &197074
 GameObject:
   m_ObjectHideFlags: 0
@@ -14311,7 +14320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167699144198212366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.633, z: -0.492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 498270}
