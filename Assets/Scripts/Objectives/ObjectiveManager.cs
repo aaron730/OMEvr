@@ -10,8 +10,17 @@ public class ObjectiveManager : MonoBehaviour
     
     public Canvas VRCanvas;
     public Canvas TwoDCanvas;
+    public float TextMoveSpeed;
+
     private Text VRText;
     private Text TwoDText;
+    private Transform VRTransform;
+    private Transform TwoDTransform;
+    private Vector3 VRPosition;
+    private Vector3 TwoDPosition;
+    private Vector3 VRDefault;
+    private Vector3 TwoDDefault;
+
     public AudioSource notificationSource;
 
     void Awake()
@@ -20,14 +29,20 @@ public class ObjectiveManager : MonoBehaviour
         
         VRText = VRCanvas.GetComponentInChildren<Text>();
         TwoDText = TwoDCanvas.GetComponentInChildren<Text>();
-
+        VRTransform = VRText.transform;
+        TwoDTransform = TwoDTransform.transform;
+        TwoDDefault = TwoDTransform.localPosition;
+        VRDefault = VRTransform.localPosition;
         
+
         TwoDText.horizontalOverflow = HorizontalWrapMode.Overflow;
         VRText.horizontalOverflow = HorizontalWrapMode.Overflow;
         TwoDText.color = new Color(255, 255, 255);
         objectives = GetComponents<Objective>();
         StartCoroutine(DelayUpdate());
-        
+        StartCoroutine(MoveText());
+
+
     }
 
     private IEnumerator DelayUpdate()
@@ -46,17 +61,25 @@ public class ObjectiveManager : MonoBehaviour
                 
             }
 
+            
+
 
             
         }
         
         yield return null;
     }
-    
-    void OnGUI()
-    {
 
-        
+    private IEnumerator MoveText()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        VRTransform.position = new Vector3(0f, Mathf.Lerp(0f, VRDefault.y/* + (open ? openDistance : 0)*/, Time.deltaTime * TextMoveSpeed), 0f);
+        TwoDTransform.position = new Vector3(0f, Mathf.Lerp(0f, TwoDDefault.y /*+ (open ? openDistance : 0)*/, Time.deltaTime * TextMoveSpeed), 0f);
+    }
+
+        private void FixedUpdate()
+    {
+       
         
     }
 
@@ -70,7 +93,9 @@ public class ObjectiveManager : MonoBehaviour
             {
                 objective.Complete();
                 Destroy(objective);
+                
             }
+            
         }
     }
 }
@@ -83,42 +108,6 @@ public abstract class Objective : MonoBehaviour
     public abstract bool IsAchieved();
     public abstract void Complete();
     public abstract string DrawHUD(int callNumber);
+
+
 }
-
-
-
-/*public class CollectCoins : Goal
-{
-
-    public int coins = 0;
-    public int requiredCoins = 50;
-
-    public override bool IsComplete()
-    {
-        return (coins >= requiredCoins);
-    }
-
-    public override void Complete()
-    {
-        ScoreSingleton.score += 10;
-    }
-
-    public override void DrawHUD()
-    {
-        GUILayout.Label(string.Format("Collected {0}/{1} coins", coins, requiredCoins));
-    }
-
-    public OnTriggerEnter(Collider other)
-    {
-        if (string.Equals(other.tag, "Coin"))
-        {
-            coins++;
-            Destroy(other.gameObject);
-        }
-    }
-}
-
-*/
- 
-// Add this to GoalManager to run a "kill the enemies" goal:    
-
