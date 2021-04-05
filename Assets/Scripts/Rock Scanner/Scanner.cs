@@ -6,11 +6,16 @@ public class Scanner : MonoBehaviour
 {
     public Monitor MonitorScript;
     
+    public void Scanning()
+    {
+        MonitorScript.DisplayText("Scanning...");
+    }
 
     public void ScanRock(GameObject rock)
     {
         MarsRock script = rock.GetComponent<MarsRock>();
-        MonitorScript.DisplayText("Rock contains " + script.Type);
+        MonitorScript.DisplayText($"Rock contains {script.Type}\n" +
+            $"Weighs {script.Weight}kg");
     }
 
     public void RemoveRock()

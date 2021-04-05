@@ -10,6 +10,8 @@ public class FoodBag : MonoBehaviour
     public Text NameText;
     public Text HydrationText;
 
+    public GameObject FoodToSpawn;
+
     public void OnPickUp()
     {
         if (AttatchedHydrator != null && IsHydrated)
@@ -33,5 +35,17 @@ public class FoodBag : MonoBehaviour
             IsHydrated = false;
             HydrationText.text = "Dehydrated";
         }
+    }
+
+    public void OpenBag()
+    {
+        if (!IsHydrated)
+        {
+            return;
+        }
+        GameObject go = Instantiate(FoodToSpawn);
+        go.transform.position = transform.position;
+        Destroy(transform.gameObject);
+        Debug.Log("Opening bag!");
     }
 }
