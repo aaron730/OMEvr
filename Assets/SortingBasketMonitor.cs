@@ -10,7 +10,7 @@ public class SortingBasketMonitor : MonoBehaviour
     public GameObject LeftLight;
 
     private float totalMass = 0;
-    private float capacity = 2;
+    private float capacity = 20;
 
     public void Start()
     {
