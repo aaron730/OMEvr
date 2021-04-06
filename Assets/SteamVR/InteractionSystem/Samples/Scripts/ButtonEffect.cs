@@ -11,17 +11,7 @@ namespace Valve.VR.InteractionSystem.Sample
     {
         public void OnButtonDown(Hand fromHand)
         {
-            ColorSelf(Color.cyan);
-           // fromHand.TriggerHapticPulse(1000);
-           if(SceneManager.GetActiveScene().name == "Orbit")
-            {
                 SceneManager.LoadScene(sceneName: "Surface");
-            }
-            else
-            {
-                SceneManager.LoadScene(sceneName: "Orbit");
-            }
-            
         }
 
         public void OnButtonUp(Hand fromHand)

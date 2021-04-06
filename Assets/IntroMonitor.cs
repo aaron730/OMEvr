@@ -25,13 +25,16 @@ public class IntroMonitor : MonoBehaviour
             {
                 MonitorText.text = MonitorText.text + "\n";
             }
-            MonitorText.text = MonitorText.text + IntroText[count];
+            else
+            {
+                MonitorText.text = MonitorText.text + IntroText[count];
+            }
             count++;
             if (count > IntroText.Length - 1)
             {
                 displaying = false;
             }
-            yield return new WaitForSeconds(Random.Range(.009f, .055f));
+            yield return new WaitForSeconds(Random.Range(.05f, .07f));
         }
     }
 }
