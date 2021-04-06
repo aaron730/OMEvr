@@ -26,6 +26,11 @@ public class DrillController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (buttonPressed)
         {
             drillTransform.Rotate(0f, -1f, 0f);
@@ -38,19 +43,16 @@ public class DrillController : MonoBehaviour
 
             }
 
-            
+
 
         }
-        else if(!buttonPressed && drillTransform.position != drillDefaultLocation)
+        else if (!buttonPressed && drillTransform.position != drillDefaultLocation)
         {
             drillTransform.Rotate(0f, -1f, 0f);
 
 
-            
-                drillTransform.Translate(0f, .001f, 0f);
 
-
-            
+            drillTransform.Translate(0f, .001f, 0f);
         }
     }
 

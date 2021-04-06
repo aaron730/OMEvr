@@ -5,6 +5,12 @@ using UnityEngine;
 public class MarsRock : MonoBehaviour
 {
     public RockType Type;
+    public float Weight;
+
+    public void Start()
+    {
+        Weight = 2;
+    }
 
     public enum RockType
     {
