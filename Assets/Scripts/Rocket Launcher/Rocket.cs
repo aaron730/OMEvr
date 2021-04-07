@@ -25,6 +25,8 @@ public class Rocket : MonoBehaviour
     public void Realign()
     {
         transform.eulerAngles = Vector3.zero;
+        transform.localPosition = new Vector3(-2.6f, -1.37f, -2.78f);
+        rb.velocity = Vector3.zero;
     }
 
     public void DisableRocket()
@@ -52,7 +54,7 @@ public class Rocket : MonoBehaviour
     {
         IsLaunched = true;
         var timer = 3;
-
+        //transform.eulerAngles = Vector3.zero;
         while (timer > 0)
         {
             Debug.Log(timer);
@@ -60,7 +62,7 @@ public class Rocket : MonoBehaviour
             timer--;
             yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(7);
         DisableRocket();
     }
 }
