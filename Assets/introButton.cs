@@ -1,7 +1,7 @@
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class DoorController : MonoBehaviour
+public class introButton : MonoBehaviour
 {
     // Sliding door
     public enum OpenDirection { x, y, z }
@@ -12,8 +12,6 @@ public class DoorController : MonoBehaviour
     private bool doorOpen = false;
     public DayCycleController cycleController;
     public AudioSource DoorOpen;
-    public AudioSource Error;
-    public Pressurized pressurized;
     public float timeToClose = 3f;
 
     bool open = false;
@@ -33,23 +31,23 @@ public class DoorController : MonoBehaviour
     {
         if (!doorBody)
             return;
-        
 
-            if (direction == OpenDirection.x)
-            {
-                doorBody.localPosition = new Vector3(Mathf.Lerp(doorBody.localPosition.x, defaultDoorPosition.x + (open ? openDistance : 0), Time.deltaTime * openSpeed), doorBody.localPosition.y, doorBody.localPosition.z);
-            }
-            else if (direction == OpenDirection.y)
-            {
-                
-                    doorBody.localPosition = new Vector3(doorBody.localPosition.x, Mathf.Lerp(doorBody.localPosition.y, defaultDoorPosition.y + (open ? openDistance : 0), Time.deltaTime * openSpeed), doorBody.localPosition.z);
-                
-            }
-            else if (direction == OpenDirection.z)
-            {
-                doorBody.localPosition = new Vector3(doorBody.localPosition.x, doorBody.localPosition.y, Mathf.Lerp(doorBody.localPosition.z, defaultDoorPosition.z + (open ? openDistance : 0), Time.deltaTime * openSpeed));
-            }
-        
+
+        if (direction == OpenDirection.x)
+        {
+            doorBody.localPosition = new Vector3(Mathf.Lerp(doorBody.localPosition.x, defaultDoorPosition.x + (open ? openDistance : 0), Time.deltaTime * openSpeed), doorBody.localPosition.y, doorBody.localPosition.z);
+        }
+        else if (direction == OpenDirection.y)
+        {
+
+            doorBody.localPosition = new Vector3(doorBody.localPosition.x, Mathf.Lerp(doorBody.localPosition.y, defaultDoorPosition.y + (open ? openDistance : 0), Time.deltaTime * openSpeed), doorBody.localPosition.z);
+
+        }
+        else if (direction == OpenDirection.z)
+        {
+            doorBody.localPosition = new Vector3(doorBody.localPosition.x, doorBody.localPosition.y, Mathf.Lerp(doorBody.localPosition.z, defaultDoorPosition.z + (open ? openDistance : 0), Time.deltaTime * openSpeed));
+        }
+
     }
 
 
@@ -58,7 +56,7 @@ public class DoorController : MonoBehaviour
 
 
 
-    
+
 
     // Deactivate the Main function when Player exit the trigger area
     /*void OnTriggerExit(Collider other)
@@ -71,29 +69,28 @@ public class DoorController : MonoBehaviour
 
     */
     public void OnPress(Hand hand)
-        {
-        if (pressurized.Pressureized)
-        {
+    {
+    
             if (doorOpen == false)
             {
                 Debug.Log("open1");
                 open = true;
                 if (openDistance <= doorBody.position.y - .1)
                 {
-                    DoorOpen.Play();
                     doorOpen = true;
-                    pressurized.Pressureized = false;
+
                     Invoke("Close", timeToClose);
-                    Invoke("ChangePressre", 10f);
+                DoorOpen.Play();
                 }
             }
-        }
-        else
-        {
-            Error.Play();
+        //else
+        //{
+        //    Debug.Log("open2");
+        //    open = false;
+        //    doorOpen = false;
 
 
-        }
+        //}
 
 
 
@@ -106,10 +103,6 @@ public class DoorController : MonoBehaviour
 
     }
 
-    public void ChangePressre()
-    {
-        pressurized.Pressureized = true;
-    }
 
     public void PlantPress(Hand hand)
     {
