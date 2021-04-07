@@ -58,7 +58,7 @@ public class Rocket : MonoBehaviour
         while (timer > 0)
         {
             Debug.Log(timer);
-            rb.AddForce(Vector3.up * 80000);
+            rb.AddForce(Vector3.up * 90000);
             timer--;
             yield return new WaitForSeconds(.5f);
         }
