@@ -25,7 +25,7 @@ public class DoorController : MonoBehaviour
     }
 
     // Main function
-    void Update()
+    void FixedUpdate()
     {
         if (!doorBody)
             return;
