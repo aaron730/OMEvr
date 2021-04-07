@@ -22,6 +22,11 @@ public class Rocket : MonoBehaviour
         EnableRocket();
     }
 
+    public void Realign()
+    {
+        transform.eulerAngles = Vector3.zero;
+    }
+
     public void DisableRocket()
     {
         rb.isKinematic = true;
