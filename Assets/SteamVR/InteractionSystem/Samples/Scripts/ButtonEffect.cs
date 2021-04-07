@@ -9,9 +9,10 @@ namespace Valve.VR.InteractionSystem.Sample
 {
     public class ButtonEffect : MonoBehaviour
     {
+        public GameObject sceneManager;
         public void OnButtonDown(Hand fromHand)
         {
-                SceneManager.LoadScene(sceneName: "Surface");
+            sceneManager.SetActive(true);
         }
 
         public void OnButtonUp(Hand fromHand)

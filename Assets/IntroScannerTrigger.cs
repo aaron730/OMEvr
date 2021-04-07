@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScannerTrigger : MonoBehaviour
+public class IntroScannerTrigger : MonoBehaviour
 {
-    public Scanner ParentScanner;
+    public IntroScanner ParentScanner;
     public List<Collider> colliders = new List<Collider>();
     public GameObject ScannerBar;
 
     public void Start()
     {
-        ParentScanner = GetComponentInParent<Scanner>();
+        ParentScanner = GetComponentInParent<IntroScanner>();
     }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Entered");
-        if(other.tag == "MarsRock")
+        if (other.tag == "IntroObject")
         {
             if (!colliders.Contains(other)) { colliders.Add(other); }
-            if(colliders.Count > 1)
+            if (colliders.Count > 1)
             {
                 ParentScanner.TooManyRocks();
                 CancelScan();
@@ -32,7 +32,7 @@ public class ScannerTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Exit");
-        if (other.tag == "MarsRock")
+        if (other.tag == "IntroObject")
         {
             colliders.Remove(other);
             if (colliders.Count == 0)

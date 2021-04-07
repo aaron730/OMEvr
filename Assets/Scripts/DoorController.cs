@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour
     public Transform doorBody; //Door body Transform
     private bool doorOpen = false;
     public DayCycleController cycleController;
+    public AudioSource DoorOpen;
 
     bool open = false;
 
@@ -57,6 +58,7 @@ public class DoorController : MonoBehaviour
             if (openDistance >= doorBody.position.y - .1)
             {
                 doorOpen = true;
+                DoorOpen.Play();
             }
         }
         else

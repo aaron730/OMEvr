@@ -9,8 +9,13 @@ public class IntroScanner : MonoBehaviour
 
     public void ScanRock(GameObject rock)
     {
-        MarsRock script = rock.GetComponent<MarsRock>();
+       IntroItem script = rock.GetComponent<IntroItem>();
         MonitorScript.DisplayText("This is a " + script.Type);
+    }
+
+    public void Scanning()
+    {
+        MonitorScript.DisplayText("Scanning...");
     }
 
     public void RemoveRock()

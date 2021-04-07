@@ -87,8 +87,8 @@ namespace Valve.VR.InteractionSystem
                 lineRenderers[i] = newObject.AddComponent<LineRenderer>();
 
                 lineRenderers[i].receiveShadows = false;
-                lineRenderers[i].reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
-                lineRenderers[i].lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+                //lineRenderers[i].reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+                //lineRenderers[i].lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
                 lineRenderers[i].shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 lineRenderers[i].material = material;
 #if (UNITY_5_4)
