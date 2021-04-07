@@ -76,7 +76,7 @@ public class DrillController : MonoBehaviour
 
     public void SpawnRocks()
     {
-        StartCoroutine(SpawnRock(100));
+        StartCoroutine(SpawnRock(20));
     }
 
     public IEnumerator SpawnRock(int numberOfRocks)
@@ -89,7 +89,7 @@ public class DrillController : MonoBehaviour
             var rock = Instantiate(toSpawn, RockSpawnPoint.position, Quaternion.identity);
             var rb = rock.GetComponent<Rigidbody>();
             var rockScript = rock.GetComponent<MarsRock>();
-            rockScript.RandomizeType();
+            rockScript.RandomizeTypeAndWeight();
             rb.AddForce(rnd.Next(-force, force), rnd.Next(0, force), rnd.Next(-force, force));
             numberOfRocks--;
             yield return new WaitForSeconds(.1f);

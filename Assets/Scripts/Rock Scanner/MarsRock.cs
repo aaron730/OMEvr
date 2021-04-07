@@ -7,11 +7,6 @@ public class MarsRock : MonoBehaviour
     public RockType Type;
     public float Weight;
 
-    public void Start()
-    {
-        Weight = 2;
-    }
-
     public enum RockType
     {
         Olivine,
@@ -20,10 +15,12 @@ public class MarsRock : MonoBehaviour
         Gypsum
     }
 
-    public void RandomizeType()
+    public void RandomizeTypeAndWeight()
     {
         Type = GetRandomEnum<RockType>();
-        Debug.Log(Type);
+        Weight = Random.Range(1, 5);
+        Debug.Log(Weight);
+        //Debug.Log(Type);
     }
     static T GetRandomEnum<T>()
     {

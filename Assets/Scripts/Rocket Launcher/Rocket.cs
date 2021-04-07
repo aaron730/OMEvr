@@ -17,19 +17,52 @@ public class Rocket : MonoBehaviour
         StartCoroutine(LaunchSequence());
     }
 
+    public void Return()
+    {
+        EnableRocket();
+    }
+
+    public void Realign()
+    {
+        transform.eulerAngles = Vector3.zero;
+        transform.localPosition = new Vector3(-2.6f, -1.37f, -2.78f);
+        rb.velocity = Vector3.zero;
+    }
+
+    public void DisableRocket()
+    {
+        rb.isKinematic = true;
+        MeshRenderer[] list = GetComponentsInChildren<MeshRenderer>();
+        foreach( MeshRenderer x in list)
+        {
+            x.enabled = false;
+        }
+        
+    }
+
+    public void EnableRocket()
+    {
+        rb.isKinematic = false;
+        MeshRenderer[] list = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer x in list)
+        {
+            x.enabled = true;
+        }
+    }
+
     public IEnumerator LaunchSequence()
     {
         IsLaunched = true;
         var timer = 3;
-
+        //transform.eulerAngles = Vector3.zero;
         while (timer > 0)
         {
             Debug.Log(timer);
-            rb.AddForce(Vector3.up * 50000);
+            rb.AddForce(Vector3.up * 90000);
             timer--;
             yield return new WaitForSeconds(.5f);
         }
-
-        //rb.isKinematic = true;
+        yield return new WaitForSeconds(7);
+        DisableRocket();
     }
 }
