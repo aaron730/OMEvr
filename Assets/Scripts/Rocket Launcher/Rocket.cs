@@ -25,7 +25,7 @@ public class Rocket : MonoBehaviour
     public void Realign()
     {
         transform.eulerAngles = Vector3.zero;
-        transform.localPosition = new Vector3(-2.6f, -1.37f, -2.78f);
+        transform.localPosition = new Vector3(0.956f, -1.37f, -2.78f);
         rb.velocity = Vector3.zero;
     }
 
