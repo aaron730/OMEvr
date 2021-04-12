@@ -11,6 +11,10 @@ public class DoorController : MonoBehaviour
     public Transform doorBody; //Door body Transform
     private bool doorOpen = false;
     public DayCycleController cycleController;
+    public AudioSource DoorOpen;
+    public AudioSource Error;
+    public Pressurized pressurized;
+    public float timeToClose = 3f;
 
     bool open = false;
 
@@ -48,28 +52,9 @@ public class DoorController : MonoBehaviour
         
     }
 
-    // Activate the Main function when Player enter the trigger area
-    void OnTriggerEnter(Collider other)
-    {
-        if (doorOpen == false)
-        {
-            open = true;
-            if (openDistance >= doorBody.position.y - .1)
-            {
-                doorOpen = true;
-            }
-        }
-        else
-        {
-            open = false;
-            doorOpen = false;
-                
-            
-        }
 
-        
 
-    }
+    // Activate the Main function when Player enter the trigger ar
 
 
 
@@ -87,25 +72,43 @@ public class DoorController : MonoBehaviour
     */
     public void OnPress(Hand hand)
         {
-
-        if (doorOpen == false)
+        if (pressurized.Pressureized)
         {
-            open = true;
-            if (openDistance >= doorBody.position.y - .1)
+            if (doorOpen == false)
             {
-                doorOpen = true;
+                Debug.Log("open1");
+                open = true;
+                if (openDistance <= doorBody.position.y - .1)
+                {
+                    DoorOpen.Play();
+                    doorOpen = true;
+                    pressurized.Pressureized = false;
+                    Invoke("Close", timeToClose);
+                    Invoke("ChangePressre", 10f);
+                }
             }
         }
         else
         {
-            open = false;
-            doorOpen = false;
+            Error.Play();
 
 
         }
 
 
 
+    }
+
+    public void Close()
+    {
+        open = false;
+        doorOpen = false;
+
+    }
+
+    public void ChangePressre()
+    {
+        pressurized.Pressureized = true;
     }
 
     public void PlantPress(Hand hand)

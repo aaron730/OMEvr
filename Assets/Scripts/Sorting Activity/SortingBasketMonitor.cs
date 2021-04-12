@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class SortingBasketMonitor : MonoBehaviour
 {
     public Text MassText;
+    public Text TotalMassSentText;
     public GameObject RightLight;
     public GameObject LeftLight;
 
     private float totalMass = 0;
     private float capacity = 20;
+    private float totalMassSent = 0;
 
     public void Start()
     {
         MassText.text = $"Mass: {0}kg / {capacity}kg";
+        TotalMassSentText.text = $"Total Mass Sent to Oribter: {0}kg";
     }
 
     public void Correct(GameObject rock)
@@ -26,6 +29,14 @@ public class SortingBasketMonitor : MonoBehaviour
     public void Incorrect(GameObject rock)
     {
         SetLightColor(Color.red);
+    }
+
+    public void SortingLaunch()
+    {
+        totalMassSent += totalMass;
+        totalMass = 0;
+        MassText.text = $"Mass: {totalMass}kg / {capacity}kg";
+        TotalMassSentText.text = $"Total Mass Sent to Oribter: {totalMassSent}kg";
     }
 
     public bool CanAddMass(float mass)

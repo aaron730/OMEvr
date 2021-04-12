@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MarsRock
   - GlassPanel
+  - IntroObject
   layers:
   - Default
   - TransparentFX
