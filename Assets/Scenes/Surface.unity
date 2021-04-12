@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.116034865, g: 0.077768385, b: 0.067349434, a: 1}
+  m_IndirectSpecularColor: {r: 0.11581378, g: 0.077609494, b: 0.067217536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -929,17 +929,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &257695846 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7480423621682551225, guid: 74519eec00bdc74418167df2afef25be, type: 3}
-  m_PrefabInstance: {fileID: 1866988151}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3046866f2955cbe428a57c4e361bb5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &264360517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,8 +2362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 625428774}
   - component: {fileID: 625428773}
-  - component: {fileID: 625428775}
-  - component: {fileID: 625428781}
   - component: {fileID: 625428776}
   - component: {fileID: 625428777}
   m_Layer: 0
@@ -2396,9 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dbbecb520066a4bba32e9ee39bfa24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectives:
-  - {fileID: 625428775}
-  - {fileID: 625428781}
+  objectives: []
   VRCanvas: {fileID: 1069697351}
   TwoDCanvas: {fileID: 1573309927}
   TextMoveSpeed: 0.1
@@ -2418,20 +2403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &625428775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625428772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0323b91abaaccb44962c1180f490d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VRPlayer: {fileID: 1146314808}
-  Chalkboard: {fileID: 1409500095}
 --- !u!82 &625428776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2541,21 +2512,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.314385, y: 1.8871858, z: 2.0444}
   m_Center: {x: -0.31610894, y: -0.4435929, z: 0.5222}
---- !u!114 &625428781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625428772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f298b1b75857943881d451bdaaf031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VRPlayer: {fileID: 1146314808}
-  Chalkboard: {fileID: 1409500095}
-  RockScanner: {fileID: 257695846}
 --- !u!1 &658099178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 144230, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -6480,6 +6436,10 @@ MonoBehaviour:
   openSpeed: 2
   doorBody: {fileID: 2016756623}
   cycleController: {fileID: 0}
+  DoorOpen: {fileID: 0}
+  Error: {fileID: 0}
+  pressurized: {fileID: 0}
+  timeToClose: 3
 --- !u!33 &1851208768
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7538,6 +7498,10 @@ MonoBehaviour:
   openSpeed: 2
   doorBody: {fileID: 2016756623}
   cycleController: {fileID: 1981721562}
+  DoorOpen: {fileID: 0}
+  Error: {fileID: 0}
+  pressurized: {fileID: 0}
+  timeToClose: 3
 --- !u!64 &2105906919
 MeshCollider:
   m_ObjectHideFlags: 0
