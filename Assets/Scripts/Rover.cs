@@ -242,8 +242,8 @@ public class Rover : MonoBehaviour
         if (other.gameObject.CompareTag("RoverObject"))
         {
             current = other.GetComponent<RoverIsNear>();
-            Debug.Log(current.Type);
             roverBase.OnObjectFind(current.Type.ToString());
+            other.gameObject.SetActive(false);
             current = null;
         }
     }

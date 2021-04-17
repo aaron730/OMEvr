@@ -9,17 +9,6 @@ public class RoverIsNear : MonoBehaviour
     public enum RoverObjectType
     {
         Metorite,
-        Curiosity
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

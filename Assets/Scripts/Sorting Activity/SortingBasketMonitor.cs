@@ -25,14 +25,14 @@ public class SortingBasketMonitor : MonoBehaviour
 
     public void Correct(GameObject rock)
     {
-        CorrectSound.Play();
+       // CorrectSound.Play();
         SetLightColor(Color.green);
         addMass(rock.GetComponent<MarsRock>().Weight);
     }
 
     public void Incorrect(GameObject rock)
     {
-        IncorrectSound.Play();
+        //IncorrectSound.Play();
         SetLightColor(Color.red);
     }
 
