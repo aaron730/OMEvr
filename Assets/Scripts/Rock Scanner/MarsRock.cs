@@ -6,7 +6,6 @@ public class MarsRock : MonoBehaviour
 {
     public RockType Type;
     public float Weight;
-
     public enum RockType
     {
         Olivine,

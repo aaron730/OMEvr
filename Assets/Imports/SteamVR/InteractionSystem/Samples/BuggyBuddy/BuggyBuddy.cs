@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 
-namespace Valve.VR.InteractionSystem.Sample
-{
-    public class BuggyBuddy : MonoBehaviour
+public class BuggyBuddy : MonoBehaviour
     {
-
         public Transform turret;
         float turretRot;
-
-
         [Tooltip("Maximum steering angle of the wheels")]
         public float maxAngle = 30f;
         [Tooltip("Maximum Turning torque")]
@@ -32,6 +29,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
         private WheelCollider[] m_Wheels;
 
+        
         public AudioSource au_motor;
         [HideInInspector]
         public float mvol;
@@ -39,7 +37,7 @@ namespace Valve.VR.InteractionSystem.Sample
         public AudioSource au_skid;
         float svol;
 
-        public WheelDust skidsample;
+        public Valve.VR.InteractionSystem.Sample.WheelDust skidsample;
         float skidSpeed = 3;
 
         public Vector3 localGravity;
@@ -48,8 +46,6 @@ namespace Valve.VR.InteractionSystem.Sample
         public Rigidbody body;
 
         public float rapidfireTime = 0;
-
-
 
         private float shootTimer;
 
@@ -67,7 +63,6 @@ namespace Valve.VR.InteractionSystem.Sample
         public float speed;
 
         public Transform centerOfMass;
-
 
         private void Start()
         {
@@ -241,5 +236,12 @@ namespace Valve.VR.InteractionSystem.Sample
 
             return angle;
         }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Rover Object"))
+            {
+
+            }
+        }
     }
-}

@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-namespace Valve.VR.InteractionSystem.Sample
-{
+
     public class BuggyController : MonoBehaviour
     {
         public Transform modelJoystick;
@@ -172,4 +171,3 @@ namespace Valve.VR.InteractionSystem.Sample
             }
         }
     }
-}
