@@ -12,6 +12,7 @@ public class RoverBase : MonoBehaviour
     public GameObject LeftLight;
     public Rover Rover;
     public Text FoundText;
+    public AudioSource found;
     //private float totalMass = 0;
    // private float capacity = 20;
     //private float totalMassSent = 0;
@@ -25,6 +26,7 @@ public class RoverBase : MonoBehaviour
 
     public void OnObjectFind(string objectName)            
     {
+        found.Play();
         SetLightColor(Color.green);
         FoundText.text = (objectName + " Found");
         Invoke("ReturnToSearching", 3f);
