@@ -22,7 +22,7 @@ public class Hydrator : MonoBehaviour
     public void DetatchBag()
     {
         AttatchedBag = null;
-        MachineText.text = "Attatch Dehydrated Bag Here";
+        MachineText.text = "Attatch Dehydrated Bag To Nozzle";
     }
 
     private void UpdateMachineText(float time)
