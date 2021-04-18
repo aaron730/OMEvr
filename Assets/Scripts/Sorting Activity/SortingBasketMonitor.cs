@@ -40,6 +40,7 @@ public class SortingBasketMonitor : MonoBehaviour
     {
         totalMassSent += totalMass;
         totalMass = 0;
+        ObjectivesManager.Instance.CompleteTask("LaunchRocket", (int)totalMass);
         MassText.text = $"Mass: {totalMass}kg / {capacity}kg";
         TotalMassSentText.text = $"Total Mass Sent to Oribter: {totalMassSent}kg";
     }

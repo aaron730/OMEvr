@@ -74,6 +74,7 @@ public class DoorController : MonoBehaviour
         {
         if (pressurized.Pressureized)
         {
+            ObjectivesManager.Instance.CompleteTask("UseAirlock", 1);
             if (doorOpen == false)
             {
                 Debug.Log("open1");

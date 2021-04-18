@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Welcome : Objective
+public class Welcome : Objective2
 {
 
     public GameObject chalkboard;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ObjectiveManager : MonoBehaviour
 {
 
-    public Objective[] objectives;
+    public Objective2[] objectives;
     
     public Canvas VRCanvas;
     public Canvas TwoDCanvas;
@@ -38,7 +38,7 @@ public class ObjectiveManager : MonoBehaviour
         TwoDText.horizontalOverflow = HorizontalWrapMode.Overflow;
         VRText.horizontalOverflow = HorizontalWrapMode.Overflow;
         TwoDText.color = new Color(255, 255, 255);
-        objectives = GetComponents<Objective>();
+        objectives = GetComponents<Objective2>();
         StartCoroutine(DelayUpdate());
         StartCoroutine(MoveText());
 
@@ -103,7 +103,7 @@ public class ObjectiveManager : MonoBehaviour
  
  
 // This is the abstract base class for all goals:
-public abstract class Objective : MonoBehaviour
+public abstract class Objective2 : MonoBehaviour
 {
     public abstract bool IsAchieved();
     public abstract void Complete();
