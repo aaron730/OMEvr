@@ -10,17 +10,20 @@ public class DrillController : MonoBehaviour
     // Start is called before the first frame update
     public Transform drillTransform;
     public AudioSource Drill;
-    public AudioClip drillContactSound;
+    public AudioSource DrillSoundLoop;
+    
     public AudioClip turnOnDrill;
     public List<GameObject> RockPrefabs;
     public Transform RockSpawnPoint;
     private bool startDrill = false;
     private bool buttonPressed = false;
     private Vector3 drillDefaultLocation;
+    public GameObject drillParticleEffects;
     void Start()
     {
         drillDefaultLocation = drillTransform.position;
         Drill.loop = true;
+        drillParticleEffects.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,22 +57,30 @@ public class DrillController : MonoBehaviour
 
             drillTransform.Translate(0f, .001f, 0f);
         }
+
+
+        if(drillTransform.position == drillDefaultLocation)
+        {
+            DrillSoundLoop.Stop();
+            drillParticleEffects.SetActive(false);
+        }
     }
 
     public void OnPress(Hand hand)
     {
         if (buttonPressed == false)
         {
-            Drill.PlayOneShot(turnOnDrill);
+            DrillSoundLoop.Play();
             
             buttonPressed = true;
 
-            StartCoroutine(playDrillContactDelaySound());
+            StartCoroutine(DrillDelay());
         }
         else
         {
             buttonPressed = false;
             Drill.Stop();
+            drillParticleEffects.SetActive(false);
         }
     
     }
@@ -96,11 +107,24 @@ public class DrillController : MonoBehaviour
         }
     }
 
-    public IEnumerator playDrillContactDelaySound()
+    public IEnumerator DrillDelay()
     {
-        yield return new WaitForSeconds(5);
-        Drill.PlayOneShot(drillContactSound);
+        yield return new WaitForSecondsRealtime(11);
+        
+        drillParticleEffects.SetActive(true);
         SpawnRocks();
+
+
+        yield return new WaitForSecondsRealtime(8);
+        buttonPressed = false;
+        
+        
+
+        yield return new WaitForSecondsRealtime(5);
+
+        drillParticleEffects.SetActive(false);
+
+        yield return null;
 
     }
 }
