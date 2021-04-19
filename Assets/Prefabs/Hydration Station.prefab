@@ -81,6 +81,102 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!82 &619202712
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939484145584619699}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: be5474c9b2b5e564f8800b3d19c35c0a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3054318061948931993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +2029,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Attatch Dehydrated Bag To Nozzle
       objectReference: {fileID: 0}
+    - target: {fileID: 8512308620613244356, guid: 1282d812c4b2c214c8c40788d4e4abf7, type: 3}
+      propertyPath: HydratorNoise
+      value: 
+      objectReference: {fileID: 619202712}
     - target: {fileID: 8512308620613244362, guid: 1282d812c4b2c214c8c40788d4e4abf7, type: 3}
       propertyPath: m_Name
       value: Hydrator (1)
@@ -2002,6 +2102,11 @@ PrefabInstance:
 --- !u!4 &939484145584619698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8512308620613244363, guid: 1282d812c4b2c214c8c40788d4e4abf7, type: 3}
+  m_PrefabInstance: {fileID: 8874479737222403449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &939484145584619699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8512308620613244362, guid: 1282d812c4b2c214c8c40788d4e4abf7, type: 3}
   m_PrefabInstance: {fileID: 8874479737222403449}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8874479737352224616
