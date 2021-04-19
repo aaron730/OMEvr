@@ -64,6 +64,24 @@ public class ObjectivesManager : MonoBehaviour
             NumberDone = 0,
             NumberNeededToComplete = 20
         });
+
+        Objectives.Add(new Objective
+        {
+            Name = "BlockIsland",
+            Description = "Find the Block Island Meteorite",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+
+        Objectives.Add(new Objective
+        {
+            Name = "PerseveranceRover",
+            Description = "Find the Abandoned Perseverance Rover",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
     }
 
     public void DrawObjectives()
