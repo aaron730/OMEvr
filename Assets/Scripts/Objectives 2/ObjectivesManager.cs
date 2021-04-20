@@ -76,8 +76,8 @@ public class ObjectivesManager : MonoBehaviour
 
         Objectives.Add(new Objective
         {
-            Name = "PerseveranceRover",
-            Description = "Find the Abandoned Perseverance Rover",
+            Name = "Opportunity",
+            Description = "Find the Abandoned Opportunity Rover",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
