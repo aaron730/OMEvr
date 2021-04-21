@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11603439, g: 0.077768385, b: 0.067349315, a: 1}
+  m_IndirectSpecularColor: {r: 0.11603391, g: 0.07776815, b: 0.0673486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6247,7 +6247,7 @@ Transform:
   m_LocalScale: {x: 0.20000005, y: 0.031850014, z: 0.30000007}
   m_Children: []
   m_Father: {fileID: 888957651}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -88.436, y: 179.358, z: 1.933}
 --- !u!23 &800196584
 MeshRenderer:
@@ -6395,7 +6395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 888957651}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &820224319
 PrefabInstance:
@@ -7498,25 +7498,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 167699144198212366, guid: a84119ce8eb01c840b2f75db1ec1bd7d, type: 3}
   m_PrefabInstance: {fileID: 820224319}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &945733056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1416390406023372225, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
-  m_PrefabInstance: {fileID: 4817313954565642589}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &945733061
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945733056}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300010, guid: 683f7c9a5dac6a44caaa4b601e92dfcc, type: 3}
 --- !u!1001 &950694678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10127,13 +10108,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drillTransform: {fileID: 699945833}
   Drill: {fileID: 1008484256}
-  drillContactSound: {fileID: 8300000, guid: 10161ccdd91864844875b7eefb2fcf0d, type: 3}
+  DrillSoundLoop: {fileID: 0}
   turnOnDrill: {fileID: 8300000, guid: d657235e7f6f71843a50e353091832c8, type: 3}
   RockPrefabs:
   - {fileID: 100000, guid: ca90c396dc4ab9745a326c1d3ea0fdb2, type: 3}
   - {fileID: 100000, guid: ed611a3ded592db4082a86450ac3e55f, type: 3}
   - {fileID: 100000, guid: ac8cd8e6320ae3e4b927387f08c24c7e, type: 3}
   RockSpawnPoint: {fileID: 817645239}
+  drillParticleEffects: {fileID: 0}
 --- !u!1 &1390034504
 GameObject:
   m_ObjectHideFlags: 0
@@ -17717,7 +17699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7360027554779002069}
   m_LocalRotation: {x: 0.631451, y: 0.631451, z: 0.31822887, w: 0.31822887}
-  m_LocalPosition: {x: 4.328, y: 2.13, z: 4.368}
+  m_LocalPosition: {x: 4.287, y: 2.13, z: 4.312}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.0025}
   m_Children:
   - {fileID: 1297615773077950732}
