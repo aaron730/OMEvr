@@ -17,6 +17,7 @@ public class Scanner : MonoBehaviour
         MonitorScript.DisplayText($"Rock contains {script.Type}\n" +
             $"Weighs {script.Weight}kg");
         ObjectivesManager.Instance.CompleteTask("ScanRocks", 1);
+
     }
 
     public void RemoveRock()
