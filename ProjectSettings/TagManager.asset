@@ -13,6 +13,7 @@ TagManager:
   - RoverObject
   - Head
   - ElectronMicroscope
+  - Glacier
   layers:
   - Default
   - TransparentFX

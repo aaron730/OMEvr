@@ -18,4 +18,16 @@ public class ElectronMicroscopeController : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ElectronMicroscope"))
+        {
+            if (ObjectivesManager.Instance.CheckIfSpecificTaskIsComplete("GlacierSample"))
+            {
+                imageComponent.enabled = true;
+            }
+        }
+    }
+
 }

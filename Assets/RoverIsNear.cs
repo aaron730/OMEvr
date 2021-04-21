@@ -9,7 +9,8 @@ public class RoverIsNear : MonoBehaviour
     public enum RoverObjectType
     {
         BlockIsland,
-        Opportunity
+        Opportunity,
+        Glacier
 
     }
 
