@@ -68,7 +68,7 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "BlockIsland",
-            Description = "Find the Block Island meteorite",
+            Description = "Find the Block Island meteorite.",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
@@ -77,7 +77,7 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "Opportunity",
-            Description = "Find the abandoned Opportunity Rover",
+            Description = "Find the abandoned Opportunity Rover.",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
@@ -86,7 +86,7 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "GlacierSample",
-            Description = "Use the hammer to recover an ice sample from the glacier",
+            Description = "Use the hammer to recover an ice sample from the glacier.",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
@@ -95,11 +95,20 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "PlaceIceOnMicroscope",
-            Description = "Place the ice you've recovered on the microscope",
+            Description = "Place the ice you've recovered on the microscope.",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
         });
+        Objectives.Add(new Objective
+        {
+            Name = "EatFood",
+            Description = "Eat 3 pieces of food.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 3
+        });
+    
     }
 
     public void DrawObjectives()

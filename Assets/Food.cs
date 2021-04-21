@@ -10,10 +10,12 @@ public class Food : MonoBehaviour
         
         if (collision.gameObject.tag == "Head")
         {
+            ObjectivesManager.Instance.CompleteTask("EatFood", 1);
             Debug.Log("Eat");
             FoodNoise.Play();
             GetComponentInParent<MeshRenderer>().enabled = false;
             Destroy(gameObject, 3);
+            
         }
     }
 }
