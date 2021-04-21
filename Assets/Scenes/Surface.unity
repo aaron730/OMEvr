@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11603391, g: 0.077768385, b: 0.067349076, a: 1}
+  m_IndirectSpecularColor: {r: 0.11603391, g: 0.077768385, b: 0.067349315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4316,6 +4316,14 @@ MonoBehaviour:
   VRCanvas: {fileID: 1069697351}
   TwoDCanvas: {fileID: 0}
   TextMoveSpeed: 0.1
+  VRText: {fileID: 0}
+  TwoDText: {fileID: 0}
+  VRTransform: {fileID: 0}
+  TwoDTransform: {fileID: 0}
+  VRPosition: {x: 0, y: 0, z: 0}
+  TwoDPosition: {x: 0, y: 0, z: 0}
+  VRDefault: {x: 0, y: 0, z: 0}
+  TwoDDefault: {x: 0, y: 0, z: 0}
   notificationSource: {fileID: 625428776}
 --- !u!4 &625428774
 Transform:
@@ -4346,6 +4354,9 @@ MonoBehaviour:
   chalkboard: {fileID: 0}
   objective: {fileID: 625428772}
   Chalkboard: {fileID: 0}
+  ChalkboardTxt: {fileID: 0}
+  isViewing: 0
+  seenDialogue: 0
 --- !u!82 &625428776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4535,29 +4546,11 @@ PrefabInstance:
       objectReference: {fileID: 1270438889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9803cc69067105488f4a78449f2aeec, type: 3}
---- !u!1 &654918848 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c6f0a1d0b073e8d419426f15527ed2c5, type: 3}
-  m_PrefabInstance: {fileID: 1320566120}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &654918849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c6f0a1d0b073e8d419426f15527ed2c5, type: 3}
   m_PrefabInstance: {fileID: 1320566120}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &654918850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654918848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c018c8d58229d044be4f9c431278f83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MonitorText: {fileID: 0}
 --- !u!1001 &663216813
 PrefabInstance:
   m_ObjectHideFlags: 0
