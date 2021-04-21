@@ -68,7 +68,7 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "BlockIsland",
-            Description = "Find the Block Island Meteorite",
+            Description = "Find the Block Island meteorite",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1
@@ -77,7 +77,25 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "Opportunity",
-            Description = "Find the Abandoned Opportunity Rover",
+            Description = "Find the abandoned Opportunity Rover",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+
+        Objectives.Add(new Objective
+        {
+            Name = "GlacierSample",
+            Description = "Use the hammer to recover an ice sample from the glacier",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+
+        Objectives.Add(new Objective
+        {
+            Name = "PlaceIceOnMicroscope",
+            Description = "Place the ice you've recovered on the microscope",
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 1

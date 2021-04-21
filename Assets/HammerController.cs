@@ -41,12 +41,13 @@ public class HammerController : MonoBehaviour
         System.Random rnd = new System.Random();
         GameObject toSpawn = ice;
         var force = 45;
-        if (Random.value > .5)
+        if (Random.value >= .8)
         {
             
             var ice = Instantiate(toSpawn, iceSpawnPoint.position, Quaternion.identity);
             Rigidbody rb = ice.GetComponent<Rigidbody>();
             rb.AddForce(rnd.Next(-force, force), rnd.Next(0, force), rnd.Next(-force, force));
+            ObjectivesManager.Instance.CompleteTask("GlacierSample", 1);
         }
         
     }
