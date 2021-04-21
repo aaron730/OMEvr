@@ -8,6 +8,8 @@ public class Hydrator : MonoBehaviour
 
     public GameObject AttatchedBag;
     public Text MachineText;
+
+    public AudioSource HydratorNoise;
     
     public void HydrateBag(GameObject foodBag)
     {
@@ -16,13 +18,14 @@ public class Hydrator : MonoBehaviour
         Material material = foodBag.GetComponentInChildren<Renderer>().material;
         material.SetColor("_Color", Color.red);
         */
+        HydratorNoise.Play();
         StartCoroutine(Inflate(5));
     }
 
     public void DetatchBag()
     {
         AttatchedBag = null;
-        MachineText.text = "Attatch Dehydrated Bag Here";
+        MachineText.text = "Attatch Dehydrated Bag To Nozzle";
     }
 
     private void UpdateMachineText(float time)

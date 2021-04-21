@@ -7,6 +7,13 @@ TagManager:
   - MarsRock
   - GlassPanel
   - IntroObject
+  - Fire
+  - projectile
+  - FxTemporaire
+  - RoverObject
+  - Head
+  - ElectronMicroscope
+  - Glacier
   layers:
   - Default
   - TransparentFX

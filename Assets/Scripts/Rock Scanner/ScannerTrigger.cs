@@ -8,6 +8,8 @@ public class ScannerTrigger : MonoBehaviour
     public List<Collider> colliders = new List<Collider>();
     public GameObject ScannerBar;
 
+    public AudioSource ScannerNoise;
+
     public void Start()
     {
         ParentScanner = GetComponentInParent<Scanner>();
@@ -46,11 +48,13 @@ public class ScannerTrigger : MonoBehaviour
     private void CancelScan()
     {
         StopAllCoroutines();
+        ScannerNoise.Stop();
         ScannerBar.GetComponent<MeshRenderer>().enabled = false;
     }
 
     private IEnumerator Scan(GameObject rock)
     {
+        ScannerNoise.Play();
         ScannerBar.GetComponent<MeshRenderer>().enabled = true;
         Vector3 starterPos = new Vector3(-0.0412f, -0.37118f, -0.28807f);
         Vector3 endPos = new Vector3(-0.0412f, -0.37118f, .309f);

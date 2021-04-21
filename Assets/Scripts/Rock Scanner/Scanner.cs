@@ -18,7 +18,8 @@ public class Scanner : MonoBehaviour
         script = rock.GetComponent<MarsRock>();
         MonitorScript.DisplayText($"Rock contains {script.Type}\n" +
             $"Weighs {script.Weight}kg");
-        rockScanned = true;
+        ObjectivesManager.Instance.CompleteTask("ScanRocks", 1);
+
     }
 
     public void RemoveRock()

@@ -14,6 +14,9 @@ public class SortingBasketMonitor : MonoBehaviour
     private float capacity = 20;
     private float totalMassSent = 0;
 
+    public AudioSource CorrectSound;
+    public AudioSource IncorrectSound;
+
     public void Start()
     {
         MassText.text = $"Mass: {0}kg / {capacity}kg";
@@ -22,18 +25,21 @@ public class SortingBasketMonitor : MonoBehaviour
 
     public void Correct(GameObject rock)
     {
+        CorrectSound.Play();
         SetLightColor(Color.green);
         addMass(rock.GetComponent<MarsRock>().Weight);
     }
 
     public void Incorrect(GameObject rock)
     {
+        IncorrectSound.Play();
         SetLightColor(Color.red);
     }
 
     public void SortingLaunch()
     {
         totalMassSent += totalMass;
+        ObjectivesManager.Instance.CompleteTask("LaunchRocket", (int)totalMass);
         totalMass = 0;
         MassText.text = $"Mass: {totalMass}kg / {capacity}kg";
         TotalMassSentText.text = $"Total Mass Sent to Oribter: {totalMassSent}kg";
