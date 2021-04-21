@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoverIsNear : MonoBehaviour
+public class Opportunity : MonoBehaviour
 {
     // Start is called before the first frame update
-    public RoverObjectType Type;
-    public enum RoverObjectType
+    void Start()
     {
-        BlockIsland,
-        Opportunity
-
+        
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
