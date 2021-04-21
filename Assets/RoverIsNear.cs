@@ -8,7 +8,9 @@ public class RoverIsNear : MonoBehaviour
     public RoverObjectType Type;
     public enum RoverObjectType
     {
-        Metorite,
+        BlockIsland,
+        Opportunity
+
     }
 
 }

@@ -64,6 +64,24 @@ public class ObjectivesManager : MonoBehaviour
             NumberDone = 0,
             NumberNeededToComplete = 20
         });
+
+        Objectives.Add(new Objective
+        {
+            Name = "BlockIsland",
+            Description = "Find the Block Island Meteorite",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+
+        Objectives.Add(new Objective
+        {
+            Name = "Opportunity",
+            Description = "Find the Abandoned Opportunity Rover",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
     }
 
     public void DrawObjectives()
@@ -123,6 +141,22 @@ public class ObjectivesManager : MonoBehaviour
         DrawObjectives();
     }
 
+    //Checks if given task name is complete
+    public bool CheckIfSpecificTaskIsComplete(string objName)
+    {
+        foreach (Objective obj in Objectives)
+        {
+            if (obj.Name == objName)
+            {
+                return obj.IsComplete;
+            }
+        }
+
+        Debug.LogError($"Objective with name {objName} not found. Check spelling");
+        return false;
+    }
+
+    //Checks if all tasks are done
     public bool CheckObjectivesCompleted()
     {
         foreach(Objective obj in Objectives)

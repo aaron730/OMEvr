@@ -243,6 +243,14 @@ public class Rover : MonoBehaviour
         {
             current = other.GetComponent<RoverIsNear>();
             roverBase.OnObjectFind(current.Type.ToString());
+            if(current.Type.ToString() == "BlockIsland")
+            {
+                ObjectivesManager.Instance.CompleteTask("BlockIsland", 1);
+            }
+            if (current.Type.ToString() == "Opportunity")
+            {
+                ObjectivesManager.Instance.CompleteTask("Opportunity", 1);
+            }
             other.gameObject.SetActive(false);
             current = null;
         }

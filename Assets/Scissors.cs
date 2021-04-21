@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Scissors : MonoBehaviour
 {
+    public AudioSource OpeningSound;
     public void OnTriggerEnter(Collider other)
     {
         FoodBag script = other.gameObject.GetComponent<FoodBag>();
@@ -11,7 +12,7 @@ public class Scissors : MonoBehaviour
         {
             return;
         }
-
+        OpeningSound.Play();
         script.OpenBag();
     }
 }
