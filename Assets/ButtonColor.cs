@@ -16,12 +16,12 @@ public class ButtonColor : MonoBehaviour
     {
         if (pressurized.Pressureized == true)
         {
-            this.gameObject.GetComponent<MeshRenderer>().material = green;
+            gameObject.GetComponent<MeshRenderer>().material = green;
 
         }
         else
         {
-            this.gameObject.GetComponent<MeshRenderer>().material = red;
+            gameObject.GetComponent<MeshRenderer>().material = red;
         }
     }
 }

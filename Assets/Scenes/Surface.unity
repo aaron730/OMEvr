@@ -24558,8 +24558,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drill Tower
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 800574960, guid: 40633192fba5a6c4a9c44ad16910bcf7,
-        type: 3}, {fileID: 1734193265, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}]
+    m_RemovedComponents:
+    - {fileID: 800574960, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
+    - {fileID: 1734193265, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 40633192fba5a6c4a9c44ad16910bcf7, type: 3}
 --- !u!33 &4830390188335104200
 MeshFilter:

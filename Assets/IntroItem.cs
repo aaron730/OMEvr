@@ -9,6 +9,8 @@ public class IntroItem : MonoBehaviour
     public enum ObjectType
     {
        Monkey,
-       Penguin
+       Penguin,
+       Rover,
+       Ball
     }
 }
