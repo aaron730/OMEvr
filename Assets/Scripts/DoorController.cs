@@ -15,6 +15,7 @@ public class DoorController : MonoBehaviour
     public AudioSource Error;
     public Pressurized pressurized;
     public float timeToClose = 3f;
+    public GameObject beacon;
 
     bool open = false;
 
@@ -75,6 +76,7 @@ public class DoorController : MonoBehaviour
         if (pressurized.Pressureized)
         {
             ObjectivesManager.Instance.CompleteTask("UseAirlock", 1);
+            Destroy(beacon);
             if (doorOpen == false)
             {
                 Debug.Log("open1");

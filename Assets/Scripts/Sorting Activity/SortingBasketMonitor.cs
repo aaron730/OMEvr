@@ -16,11 +16,12 @@ public class SortingBasketMonitor : MonoBehaviour
 
     public AudioSource CorrectSound;
     public AudioSource IncorrectSound;
+    public GameObject beacon;
 
     public void Start()
     {
         MassText.text = $"Mass: {0}kg / {capacity}kg";
-        TotalMassSentText.text = $"Total Mass Sent to Oribter: {0}kg";
+        TotalMassSentText.text = $"Total Mass Sent to Orbiter: {0}kg";
     }
 
     public void Correct(GameObject rock)
@@ -40,6 +41,10 @@ public class SortingBasketMonitor : MonoBehaviour
     {
         totalMassSent += totalMass;
         ObjectivesManager.Instance.CompleteTask("LaunchRocket", (int)totalMass);
+        if(totalMassSent == 20)
+        {
+            Destroy(beacon);
+        }
         totalMass = 0;
         MassText.text = $"Mass: {totalMass}kg / {capacity}kg";
         TotalMassSentText.text = $"Total Mass Sent to Oribter: {totalMassSent}kg";
