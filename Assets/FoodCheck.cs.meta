@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: bb354891d899d2a478089f1771a481c9
+guid: 66687f178092bd741967b87c7f7b1329
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - FoodNoise: {instanceID: 0}
-  - beacon: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

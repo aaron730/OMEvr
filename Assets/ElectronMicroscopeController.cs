@@ -9,6 +9,7 @@ public class ElectronMicroscopeController : MonoBehaviour
     public Sprite[] images;
     public Image imageComponent;
     public Text computerText;
+    public GameObject beacon;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,8 @@ public class ElectronMicroscopeController : MonoBehaviour
                 computerText.text = "Success";
                 imageComponent.enabled = true;
                 ObjectivesManager.Instance.CompleteTask("PlaceIceOnMicroscope", 1);
+                Destroy(beacon);
+
             }
         }
     }
