@@ -24,13 +24,17 @@
             "m_Id": "995caae1226e4155adeb0d06746657c2"
         }
     ],
-    "m_GroupDatas": [],
+    "m_GroupDatas": [
+        {
+            "m_Id": "097bc4315c4d47469370a347918747e8"
+        }
+    ],
     "m_StickyNoteDatas": [],
     "m_Edges": [],
     "m_VertexContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 0.0
+            "x": -170.0,
+            "y": -49.333343505859378
         },
         "m_Blocks": [
             {
@@ -46,8 +50,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 200.0
+            "x": -170.0,
+            "y": 176.66668701171876
         },
         "m_Blocks": [
             {
@@ -77,6 +81,17 @@
             "m_Id": "2b8c220b368b4e77bef2c3925db76279"
         }
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "097bc4315c4d47469370a347918747e8",
+    "m_Title": "test",
+    "m_Position": {
+        "x": 201.0,
+        "y": -35.0
+    }
 }
 
 {
