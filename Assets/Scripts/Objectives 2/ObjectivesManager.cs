@@ -65,23 +65,7 @@ public class ObjectivesManager : MonoBehaviour
             NumberNeededToComplete = 20
         });
 
-        Objectives.Add(new Objective
-        {
-            Name = "BlockIsland",
-            Description = "Find the Block Island meteorite.",
-            IsComplete = false,
-            NumberDone = 0,
-            NumberNeededToComplete = 1
-        });
-
-        Objectives.Add(new Objective
-        {
-            Name = "Opportunity",
-            Description = "Find the abandoned Opportunity Rover.",
-            IsComplete = false,
-            NumberDone = 0,
-            NumberNeededToComplete = 1
-        });
+        
 
         Objectives.Add(new Objective
         {
@@ -108,7 +92,39 @@ public class ObjectivesManager : MonoBehaviour
             NumberDone = 0,
             NumberNeededToComplete = 3
         });
-    
+        Objectives.Add(new Objective
+        {
+            Name = "Perseverance",
+            Description = "Find the abandoned Perseverance Rover.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+        Objectives.Add(new Objective
+        {
+            Name = "Insight",
+            Description = "Find the abandoned Insight Rover.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+        Objectives.Add(new Objective
+        {
+            Name = "Opportunity",
+            Description = "Find the abandoned Opportunity Rover.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+        Objectives.Add(new Objective
+        {
+            Name = "BlockIsland",
+            Description = "Find the Block Island meteorite.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+
     }
 
     public void DrawObjectives()

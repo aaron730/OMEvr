@@ -10,7 +10,11 @@ public class RoverIsNear : MonoBehaviour
     {
         BlockIsland,
         Opportunity,
-        Glacier
+        Glacier,
+        Insight,
+        Perseverance,
+        Curiosity
+
 
     }
 

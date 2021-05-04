@@ -251,6 +251,18 @@ public class Rover : MonoBehaviour
             {
                 ObjectivesManager.Instance.CompleteTask("Opportunity", 1);
             }
+            if (current.Type.ToString() == "Perseverance")
+            {
+                ObjectivesManager.Instance.CompleteTask("Perseverance", 1);
+            }
+            if (current.Type.ToString() == "Opportunity")
+            {
+                ObjectivesManager.Instance.CompleteTask("Insight", 1);
+            }
+            if (current.Type.ToString() == "Opportunity")
+            {
+                ObjectivesManager.Instance.CompleteTask("Curiosity", 1);
+            }
             other.gameObject.SetActive(false);
             current = null;
         }
