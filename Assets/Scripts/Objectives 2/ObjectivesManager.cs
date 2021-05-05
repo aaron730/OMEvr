@@ -94,6 +94,14 @@ public class ObjectivesManager : MonoBehaviour
         });
         Objectives.Add(new Objective
         {
+            Name = "RepairTower",
+            Description = "Recalibrate the radio on the radio tower.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
+        });
+        Objectives.Add(new Objective
+        {
             Name = "Perseverance",
             Description = "Find the abandoned Perseverance Rover.",
             IsComplete = false,
