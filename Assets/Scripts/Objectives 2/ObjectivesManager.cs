@@ -12,6 +12,8 @@ public class ObjectivesManager : MonoBehaviour
 
     public bool AllObjectivesComplete;
 
+    public GameObject EndGameButton;
+
     //Code to ensure only one Objective Manager exists in a scene
     public void Awake()
     {
@@ -157,6 +159,7 @@ public class ObjectivesManager : MonoBehaviour
         if (CheckObjectivesCompleted())
         {
             TasksCompleteText.text = "ALL TASKS COMPLETED";
+            EndGameButton.SetActive(true);
             AllObjectivesComplete = true;
         }
     }
