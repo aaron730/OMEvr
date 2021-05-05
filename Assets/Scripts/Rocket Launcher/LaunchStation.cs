@@ -8,6 +8,7 @@ public class LaunchStation : MonoBehaviour
     public Rocket Rocket;
     public RocketMonitor RocketMonitor;
     public SortingBasketMonitor SortingBasketMonitor;
+    public AudioSource CountDownAudio;
 
     private bool InLaunchSequence = false;
 
@@ -28,6 +29,7 @@ public class LaunchStation : MonoBehaviour
     {
         InLaunchSequence = true;
         var timer = 10;
+        CountDownAudio.Play();
         while(timer >= 0)
         {
             RocketMonitor.SetText(timer.ToString());
