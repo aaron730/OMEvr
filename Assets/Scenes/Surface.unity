@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11603391, g: 0.077768385, b: 0.067349315, a: 1}
+  m_IndirectSpecularColor: {r: 0.11603391, g: 0.077768385, b: 0.067349076, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10561,7 +10561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54000010614438436, guid: 1e914d8e31fa95b488c87df17e68d504, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 82000011706195170, guid: 1e914d8e31fa95b488c87df17e68d504, type: 3}
       propertyPath: MaxDistance
@@ -14808,7 +14808,7 @@ MonoBehaviour:
   roverBase: {fileID: 7360027554779002070}
   turret: {fileID: 0}
   maxAngle: 60
-  maxTurnTorque: 65
+  maxTurnTorque: 30
   maxTorque: 25
   brakeTorque: 15
   wheelRenders:
@@ -16124,7 +16124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2665460261811099956, guid: 3635a37e153929d45bca8cc840dcbdf3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7409868
+      value: 0.525
       objectReference: {fileID: 0}
     - target: {fileID: 2665460261811099956, guid: 3635a37e153929d45bca8cc840dcbdf3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16132,7 +16132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2665460261811099956, guid: 3635a37e153929d45bca8cc840dcbdf3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.3129635
+      value: 11.493
       objectReference: {fileID: 0}
     - target: {fileID: 2665460261811099956, guid: 3635a37e153929d45bca8cc840dcbdf3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22236,6 +22236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651742659163}
   - component: {fileID: 919132147755989218}
+  - component: {fileID: 919132147755989219}
   m_Layer: 0
   m_Name: InSight
   m_TagString: RoverObject
@@ -22257,6 +22258,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 3
   Beacon: {fileID: 1894708743}
+--- !u!135 &919132147755989219
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147755989217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.89563
+  m_Center: {x: 0.22862244, y: 0, z: -0.38661194}
 --- !u!1 &919132147987777005
 GameObject:
   m_ObjectHideFlags: 0
@@ -22267,6 +22281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651653594967}
   - component: {fileID: 919132147987777006}
+  - component: {fileID: 919132147987777007}
   m_Layer: 0
   m_Name: Perseverance
   m_TagString: RoverObject
@@ -22288,6 +22303,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   Beacon: {fileID: 1614850791}
+--- !u!135 &919132147987777007
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147987777005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.3192024
+  m_Center: {x: 0, y: 0, z: -0.21861649}
 --- !u!1 &919132148316883968
 GameObject:
   m_ObjectHideFlags: 0

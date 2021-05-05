@@ -242,6 +242,7 @@ public class Rover : MonoBehaviour
         if (other.gameObject.CompareTag("RoverObject"))
         {
             current = other.GetComponent<RoverIsNear>();
+            current.disableBeacon();
             roverBase.OnObjectFind(current.Type.ToString());
             if(current.Type.ToString() == "BlockIsland")
             {
