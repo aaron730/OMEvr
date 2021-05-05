@@ -9,7 +9,6 @@ public class HammerController : MonoBehaviour
     public AudioSource hammerHit;
     public Transform iceSpawnPoint;
     private int timesHit;
-    public GameObject beacon;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +48,6 @@ public class HammerController : MonoBehaviour
             Rigidbody rb = ice.GetComponent<Rigidbody>();
             rb.AddForce(rnd.Next(-force, force), rnd.Next(0, force), rnd.Next(-force, force));
             ObjectivesManager.Instance.CompleteTask("GlacierSample", 1);
-            Destroy(beacon);
         }
         
     }
