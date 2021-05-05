@@ -37,6 +37,7 @@ public class TowerRecalibration : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         CreakingMetal.Stop();
+        ObjectivesManager.Instance.CompleteTask("RepairTower", 1);
         MonitorText.text = "<color=green>TOWER CALIBRATED</color>";
     }
 }

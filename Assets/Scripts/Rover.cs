@@ -242,6 +242,7 @@ public class Rover : MonoBehaviour
         if (other.gameObject.CompareTag("RoverObject"))
         {
             current = other.GetComponent<RoverIsNear>();
+            current.disableBeacon();
             roverBase.OnObjectFind(current.Type.ToString());
             if(current.Type.ToString() == "BlockIsland")
             {
@@ -259,11 +260,11 @@ public class Rover : MonoBehaviour
             {
                 ObjectivesManager.Instance.CompleteTask("Insight", 1);
             }
-            if (current.Type.ToString() == "Opportunity")
+            if (current.Type.ToString() == "Curiosity")
             {
                 ObjectivesManager.Instance.CompleteTask("Curiosity", 1);
             }
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             current = null;
         }
     }

@@ -59,10 +59,10 @@ public class ObjectivesManager : MonoBehaviour
         Objectives.Add(new Objective
         {
             Name = "LaunchRocket",
-            Description = "Launch 20kg of sorted rocks into space.",
+            Description = "Launch 10kg of sorted rocks into space.",
             IsComplete = false,
             NumberDone = 0,
-            NumberNeededToComplete = 20
+            NumberNeededToComplete = 10
         });
 
         
@@ -91,6 +91,14 @@ public class ObjectivesManager : MonoBehaviour
             IsComplete = false,
             NumberDone = 0,
             NumberNeededToComplete = 3
+        });
+        Objectives.Add(new Objective
+        {
+            Name = "RepairTower",
+            Description = "Recalibrate the radio on the radio tower.",
+            IsComplete = false,
+            NumberDone = 0,
+            NumberNeededToComplete = 1
         });
         Objectives.Add(new Objective
         {

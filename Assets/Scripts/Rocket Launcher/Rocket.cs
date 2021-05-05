@@ -6,9 +6,13 @@ public class Rocket : MonoBehaviour
 {
     private Rigidbody rb;
     public bool IsLaunched;
+    public AudioSource LaunchSound;
+
+    private Vector3 localPos;
 
     public void Start()
     {
+        localPos = transform.localPosition;
         IsLaunched = false;
         rb = GetComponent<Rigidbody>();
     }
@@ -24,9 +28,9 @@ public class Rocket : MonoBehaviour
 
     public void Realign()
     {
-        transform.eulerAngles = Vector3.zero;
-        transform.localPosition = new Vector3(0.956f, -1.37f, -2.78f);
         rb.velocity = Vector3.zero;
+        transform.eulerAngles = Vector3.zero;
+        transform.localPosition = localPos;      
     }
 
     public void DisableRocket()
@@ -53,6 +57,7 @@ public class Rocket : MonoBehaviour
     public IEnumerator LaunchSequence()
     {
         IsLaunched = true;
+        LaunchSound.Play();
         var timer = 3;
         //transform.eulerAngles = Vector3.zero;
         while (timer > 0)
