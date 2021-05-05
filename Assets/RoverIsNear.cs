@@ -6,6 +6,12 @@ public class RoverIsNear : MonoBehaviour
 {
     // Start is called before the first frame update
     public RoverObjectType Type;
+    public GameObject Beacon;
+
+    public void disableBeacon()
+    {
+        Beacon.SetActive(false);
+    }
     public enum RoverObjectType
     {
         BlockIsland,
