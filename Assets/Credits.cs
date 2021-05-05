@@ -20,7 +20,7 @@ public class Credits : MonoBehaviour
     {
         if (isScrolling)
         {
-            CreditsText.transform.Translate(Vector3.up * .25f);
+            CreditsText.transform.Translate(Vector3.up * .1f);
         }
     }
 }
